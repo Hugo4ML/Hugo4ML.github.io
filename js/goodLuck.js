@@ -1,3 +1,5 @@
+"use strict";
+
 WebGL2RenderingContext.prototype.readShader = async function(path) {
   /*
   Creates an openGL shader from contents of GLSL file.
