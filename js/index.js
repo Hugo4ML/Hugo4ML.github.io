@@ -1,4 +1,4 @@
-document.getElementById("TEXT").innerHTML = "HELL";
+document.getElementById("TEXT").innerHTML = "HOI";
 /*const canvas = document.getElementById("canvas");
 const gl = canvas.getContext("webgl2");
 if(!gl) {
