@@ -1,8 +1,8 @@
-document.getElementById("TEXT").innerHTML = "BOYE";
+document.getElementById("TEXT").innerHTML = "HOI; BOYE";
 
 const canvas = document.getElementById("canvas");
-canvas.width = document.body.clientWidth;
-canvas.height = document.body.clientHeight;
+//canvas.width = document.body.clientWidth;
+//canvas.height = document.body.clientHeight;
 
 const gl = canvas.getContext("webgl2");
 if(!gl) {
