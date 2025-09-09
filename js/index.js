@@ -1,4 +1,4 @@
-document.title = '(0.01) Simple project';
+document.title = '(0.02) Simple project';
 
 const canvas = document.getElementById("canvas");
 
