@@ -1,3 +1,5 @@
+"use strict";
+
 document.title = "(0.03) Simple project";
 
 const canvas = document.getElementById("canvas");
