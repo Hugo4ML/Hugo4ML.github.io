@@ -1,5 +1,9 @@
-document.getElementById("TEXT").innerHTML = "HOI";
+document.getElementById("TEXT").innerHTML = "BOYE";
+
 const canvas = document.getElementById("canvas");
+canvas.width = document.body.clientWidth;
+canvas.height = document.body.clientHeight;
+
 const gl = canvas.getContext("webgl2");
 if(!gl) {
   console.log("Failed to create a webGL2 context.");
