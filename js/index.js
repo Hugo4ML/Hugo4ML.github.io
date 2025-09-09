@@ -1,4 +1,4 @@
-document.getElementById("TEXT").innerHTML = "HOI; BOYE";
+document.title = "(0.01) Simple project";
 
 const canvas = document.getElementById("canvas");
 
