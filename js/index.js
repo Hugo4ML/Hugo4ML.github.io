@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.03) Simple project";
+document.title = "(0.04) Simple project";
 
 const canvas = document.getElementById("canvas");
 
