@@ -22,7 +22,7 @@ function Shader(gl, path) {
   }
 }
 
-function Program(gl, vertexShader, fragmentShader) {
+function ShaderProgram(gl, vertexShader, fragmentShader) {
   /*
   Create a shader program attaching all specified shaders.
   */
@@ -36,3 +36,5 @@ function Program(gl, vertexShader, fragmentShader) {
     gl.deleteShader(this);
   }
 }
+
+export {Shader, ShaderProgram};
