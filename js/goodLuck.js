@@ -1,26 +1,26 @@
 "use strict";
 
-WebGL2RenderingContext.prototype.readShader = async function(path) {
+function Shader(gl, path) {
   /*
   Creates an openGL shader from contents of GLSL file.
   */
   switch(path.slice(path.length - 5, path.length)) {
   case ".glvs":
-    let shaderStage = this.VERTEX_SHADER;
+    let shaderStage = gl.VERTEX_SHADER;
     break;
   case ".glfs":
-    let shaderStage = this.FRAGMENT_SHADER;
+    let shaderStage = gl.FRAGMENT_SHADER;
     break;
   }
   const file = await fetch(path);
   
-  let shader = this.createShader(shaderStage);
-  this.shaderSource(shader, await file.text());
-  this.compileShader(shader);
+  let shader = gl.createShader(shaderStage);
+  gl.shaderSource(shader, await file.text());
+  gl.compileShader(shader);
   
-  if(this.getShaderParameter(this.COMPILE_STATUS) {
+  if(gl.getShaderParameter(gl.COMPILE_STATUS) {
     return shader;
   }
-  console.log(this.glGetShaderInfoLog(shader));
-  this.deleteShader(shader);
+  console.log(gl.glGetShaderInfoLog(shader));
+  gl.deleteShader(shader);
 }
