@@ -12,18 +12,27 @@ function Shader(gl, path) {
     let shaderStage = gl.FRAGMENT_SHADER;
     break;
   }
-  let shader = gl.createShader(shaderStage);
-  fetch(path).then(file => file.text()).then(text => gl.shaderSource(shader, text));
-  gl.compileShader(shader);
+  Object.assign(this, gl.createShader(shaderStage));
+  fetch(path).then(file => file.text()).then(text => gl.shaderSource(this, text));
+  gl.compileShader(this);
   
-  if(gl.getShaderParameter(gl.COMPILE_STATUS)) {
-    Object.assign(this, shader);
-  } else {
-    console.log(gl.glGetShaderInfoLog(shader));
-    gl.deleteShader(shader);
+  if(!gl.getShaderParameter(gl.COMPILE_STATUS)) {
+    console.log(gl.glGetShaderInfoLog(this));
+    gl.deleteShader(this);
   }
 }
 
-function Program(gl, ) {
+function Program(gl, vertexShader, fragmentShader) {
+  /*
+  Create a shader program attaching all specified shaders.
+  */
+  Object.assign(this, gl.createProgram());
+  gl.attachShader(vertexShader);
+  gl.attachShader(fragmentShader);
+  gl.linkProgram(this);
   
+  if(!gl.getProgramParameter(gl.LINK_STATUS)) {
+    console.log(gl.glGetProgramInfoLog(this));
+    gl.deleteShader(this);
+  }
 }
