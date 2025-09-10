@@ -17,7 +17,7 @@ class Shader extends WebGLShader {
       shaderStage = gl.FRAGMENT_SHADER;
       break;
     }
-    super(gl.createShader(shaderStage));
+    super();
     fetch(path).then(file => file.text()).then(text => gl.shaderSource(this, text));
     gl.compileShader(this);
     
