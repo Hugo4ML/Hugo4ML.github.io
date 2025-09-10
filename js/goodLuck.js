@@ -13,7 +13,7 @@ function Shader(gl, path) {
     break;
   }
   let shader = gl.createShader(shaderStage);
-  shader, fetch(path).then(file => file.text()).then(text => gl.shaderSource(shader, text));
+  fetch(path).then(file => file.text()).then(text => gl.shaderSource(shader, text));
   gl.compileShader(shader);
   
   if(gl.getShaderParameter(gl.COMPILE_STATUS) {
