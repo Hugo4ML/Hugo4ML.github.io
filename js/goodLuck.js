@@ -16,9 +16,14 @@ function Shader(gl, path) {
   fetch(path).then(file => file.text()).then(text => gl.shaderSource(shader, text));
   gl.compileShader(shader);
   
-  if(gl.getShaderParameter(gl.COMPILE_STATUS) {
-    return shader;
+  if(gl.getShaderParameter(gl.COMPILE_STATUS)) {
+    Object.assign(this, shader);
+  } else {
+    console.log(gl.glGetShaderInfoLog(shader));
+    gl.deleteShader(shader);
   }
-  console.log(gl.glGetShaderInfoLog(shader));
-  gl.deleteShader(shader);
+}
+
+function Program(gl, ) {
+  
 }
