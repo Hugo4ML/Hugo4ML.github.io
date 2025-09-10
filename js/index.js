@@ -9,6 +9,7 @@ if(!gl) {
   console.log("Failed to create a webGL2 context.");
 } else {
   fetch("../glsl/vertexShader.glvs").then((file => file.text())).then(console.log);
+  console.log(gl.createShader());
   gl.clearColor(0.5, 0.3, 0.2, 1.0);
   gl.clear(gl.COLOR_BUFFER_BIT);
 }
