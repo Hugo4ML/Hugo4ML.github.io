@@ -10,9 +10,9 @@ const gl = canvas.getContext("webgl2");
 if(!gl) {
   console.log("Failed to create a webGL2 context.");
 } else {
-  let vertexShader = new Shader(gl, "../glsl/vertexShader.glvs");
-  let fragmentShader = new Shader(gl, "../glsl/fragmentShader.glfs");
-  let shaderProgram = new ShaderProgram(gl, vertexShader, fragmentShader);
+  let vertexShader = new goodLuck.Shader(gl, "../glsl/vertexShader.glvs");
+  let fragmentShader = new goodLuck.Shader(gl, "../glsl/fragmentShader.glfs");
+  let shaderProgram = new goodLuck.ShaderProgram(gl, vertexShader, fragmentShader);
 
   let positions = new Float32Array([
     0, 0, 0,
