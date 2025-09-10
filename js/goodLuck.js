@@ -4,12 +4,13 @@ function Shader(gl, path) {
   /*
   Creates an openGL shader from contents of GLSL file.
   */
+  let shaderStage = undefined;
   switch(path.slice(path.length - 5, path.length)) {
   case ".glvs":
-    let shaderStage = gl.VERTEX_SHADER;
+    shaderStage = gl.VERTEX_SHADER;
     break;
   case ".glfs":
-    let shaderStage = gl.FRAGMENT_SHADER;
+    shaderStage = gl.FRAGMENT_SHADER;
     break;
   }
   Object.assign(this, gl.createShader(shaderStage));
