@@ -12,10 +12,8 @@ function Shader(gl, path) {
     let shaderStage = gl.FRAGMENT_SHADER;
     break;
   }
-  const file = await fetch(path);
-  
   let shader = gl.createShader(shaderStage);
-  gl.shaderSource(shader, await file.text());
+  shader, fetch(path).then(file => file.text()).then(text => gl.shaderSource(shader, text));
   gl.compileShader(shader);
   
   if(gl.getShaderParameter(gl.COMPILE_STATUS) {
