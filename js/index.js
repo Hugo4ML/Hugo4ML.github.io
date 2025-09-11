@@ -9,7 +9,12 @@ if(!gl) {
   console.log("Failed to create a webGL2 context.");
 } else {
   let vertexShader = gl.createShader(gl.VERTEX_SHADER);
+  fetch("../glsl/vertexShader.glvs").then(file => file.text()).then(source => gl.shaderSource(vertexShader, source));
+  gl.compileShader(vertexShader);
   let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+  fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(source => gl.shaderSource(fragmentShader, source));
+  gl.compileShader(fragmentShader);
+  
   let program = gl.createProgram();
   gl.attachShader(program, vertexShader);
   gl.attachShader(program, fragmentShader);
