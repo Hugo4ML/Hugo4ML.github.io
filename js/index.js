@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.17) Simple project";
+document.title = "(0.18) Simple project";
 const canvas = document.getElementById("canvas");
 
 async function main(canvas) {
@@ -14,11 +14,11 @@ async function main(canvas) {
   }
 
   let vertexShader = gl.createShader(gl.VERTEX_SHADER);
-  gl.shaderSource(vertexShader, await fetch("../glsl/vertexShader.glvs").text());
+  gl.shaderSource(vertexShader, await (await fetch("../glsl/vertexShader.glvs")).text());
   gl.compileShader(await vertexShader);
   
   let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-  gl.shaderSource(fragmentShader, await fetch("../glsl/fragmentShader.glfs").text());
+  gl.shaderSource(fragmentShader, await (await fetch("../glsl/fragmentShader.glfs")).text());
   gl.compileShader(await fragmentShader);
   
   let program = gl.createProgram();
