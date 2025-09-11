@@ -1,7 +1,9 @@
 "use strict";
 
-document.title = "(0.18) Simple project";
+document.title = "(0.19) Simple project";
 const canvas = document.getElementById("canvas");
+canvas.width = document.body.clientWidth;
+canvas.height = document.body.clientHeight;
 
 async function main(canvas) {
   /*
