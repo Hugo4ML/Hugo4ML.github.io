@@ -13,14 +13,14 @@ var fragmentShaderSource = `#version 300 es
 
 precision highp float;
 
-out vec4 outColor;
+out vec4 _fragColor;
 
 void main() {
-  outColor = vec4(1, 0, 0.5, 1);
+  _fragColor = vec4(1, 0, 0.5, 1);
 }
 `;
 
-document.title = "(0.11) Simple project";
+document.title = "(0.12) Simple project";
 
 const canvas = document.getElementById("canvas");
 
@@ -34,8 +34,8 @@ if(!gl) {
   fetch("../glsl/vertexShader.glvs").then(file => file.text()).then(console.log);
   gl.compileShader(vertexShader);
   let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-  //gl.shaderSource(fragmentShader, fragmentShaderSource);
-  fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(source => gl.shaderSource(fragmentShader, source));
+  gl.shaderSource(fragmentShader, fragmentShaderSource);
+  //fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(source => gl.shaderSource(fragmentShader, source));
   fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(console.log);
   gl.compileShader(fragmentShader);
   
