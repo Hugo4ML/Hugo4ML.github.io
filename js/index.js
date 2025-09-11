@@ -20,7 +20,7 @@ void main() {
 }
 `;
 
-document.title = "(0.14) Simple project";
+document.title = "(0.15) Simple project";
 const canvas = document.getElementById("canvas");
 
 async function main(canvas) {
