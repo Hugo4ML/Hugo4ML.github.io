@@ -11,8 +11,8 @@ if(!gl) {
   let vertexShader = gl.createShader(gl.VERTEX_SHADER);
   let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
   let program = gl.createProgram();
-  gl.attachShader(vertexShader);
-  gl.attachShader(fragmentShader);
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
   gl.linkProgram(program);
 
   let positions = new Float32Array([
@@ -25,7 +25,7 @@ if(!gl) {
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
   gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
   
-  let positionL = gl.getAttribLocation("position");
+  let positionL = gl.getAttribLocation(program, "position");
 
   let vao = gl.createVertexArray();
   gl.bindVertexArray(vao);
