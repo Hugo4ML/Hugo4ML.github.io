@@ -20,7 +20,7 @@ void main() {
 }
 `;
 
-document.title = "(0.12) Simple project";
+document.title = "(0.13) Simple project";
 
 const canvas = document.getElementById("canvas");
 
@@ -34,7 +34,8 @@ if(!gl) {
   fetch("../glsl/vertexShader.glvs").then(file => file.text()).then(console.log);
   gl.compileShader(vertexShader);
   let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-  gl.shaderSource(fragmentShader, fragmentShaderSource);
+  //gl.shaderSource(fragmentShader, fragmentShaderSource);
+  gl.shaderSource(shader, fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(text => {lines = text.split("\n")}));
   //fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(source => gl.shaderSource(fragmentShader, source));
   fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(console.log);
   gl.compileShader(fragmentShader);
