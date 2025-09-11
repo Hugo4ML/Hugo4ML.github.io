@@ -1,25 +1,5 @@
 "use strict";
 
-var vertexShaderSource = `#version 300 es
-
-in vec3 position;
-
-void main() {
-  gl_Position = vec4(position, 1.0);
-}
-`;
-
-var fragmentShaderSource = `#version 300 es
-
-precision highp float;
-
-out vec4 _fragColor;
-
-void main() {
-  _fragColor = vec4(1, 0, 0.5, 1);
-}
-`;
-
 document.title = "(0.15) Simple project";
 const canvas = document.getElementById("canvas");
 
@@ -34,21 +14,19 @@ async function main(canvas) {
   }
 
   let vertexShader = gl.createShader(gl.VERTEX_SHADER);
+  let vertexShaderFile = await fetch("../glsl/vertexShader.glvs");
+  let vertexShaderSource = await vertexShaderFile.text();
   gl.shaderSource(vertexShader, vertexShaderSource);
-  //fetch("../glsl/vertexShader.glvs").then(file => file.text()).then(source => gl.shaderSource(vertexShader, source));
-  //fetch("../glsl/vertexShader.glvs").then(file => file.text()).then(console.log);
   gl.compileShader(vertexShader);
+  
   let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-  //gl.shaderSource(fragmentShader, fragmentShaderSource);
-
   let fragmentShaderFile = await fetch("../glsl/fragmentShader.glfs");
   let fragmentShaderSource = await fragmentShaderFile.text();
   gl.shaderSource(fragmentShader, await fragmentShaderSource);
-  
   gl.compileShader(await fragmentShader);
   
   let program = gl.createProgram();
-  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, await vertexShader);
   gl.attachShader(program, await fragmentShader);
   gl.linkProgram(await program);
 
