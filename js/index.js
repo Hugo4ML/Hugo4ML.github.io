@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.09) Simple project";
+document.title = "(0.10) Simple project";
 
 const canvas = document.getElementById("canvas");
 
@@ -10,9 +10,11 @@ if(!gl) {
 } else {
   let vertexShader = gl.createShader(gl.VERTEX_SHADER);
   fetch("../glsl/vertexShader.glvs").then(file => file.text()).then(source => gl.shaderSource(vertexShader, source));
+  fetch("../glsl/vertexShader.glvs").then(file => file.text()).then(console.log);
   gl.compileShader(vertexShader);
   let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
   fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(source => gl.shaderSource(fragmentShader, source));
+  fetch("../glsl/vertexShader.glvs").then(file => file.text()).then(console.log);
   gl.compileShader(fragmentShader);
   
   let program = gl.createProgram();
