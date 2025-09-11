@@ -1,5 +1,25 @@
 "use strict";
 
+var vertexShaderSource = `#version 300 es
+
+in vec3 position;
+
+void main() {
+  gl_Position = vec4(position, 1.0);
+}
+`;
+
+var fragmentShaderSource = `#version 300 es
+
+precision highp float;
+
+out vec4 outColor;
+
+void main() {
+  outColor = vec4(1, 0, 0.5, 1);
+}
+`;
+
 document.title = "(0.10) Simple project";
 
 const canvas = document.getElementById("canvas");
@@ -9,11 +29,13 @@ if(!gl) {
   console.log("Failed to create a webGL2 context.");
 } else {
   let vertexShader = gl.createShader(gl.VERTEX_SHADER);
-  fetch("../glsl/vertexShader.glvs").then(file => file.text()).then(source => gl.shaderSource(vertexShader, source));
+  gl.shaderSource(vertexShader, vertexShaderSource);
+  //fetch("../glsl/vertexShader.glvs").then(file => file.text()).then(source => gl.shaderSource(vertexShader, source));
   fetch("../glsl/vertexShader.glvs").then(file => file.text()).then(console.log);
   gl.compileShader(vertexShader);
   let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-  fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(source => gl.shaderSource(fragmentShader, source));
+  gl.shaderSource(fragmentShader, fragmentShaderSource);
+  //fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(source => gl.shaderSource(fragmentShader, source));
   fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(console.log);
   gl.compileShader(fragmentShader);
   
