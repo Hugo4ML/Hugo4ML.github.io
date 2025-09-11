@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.16) Simple project";
+document.title = "(0.17) Simple project";
 const canvas = document.getElementById("canvas");
 
 async function main(canvas) {
@@ -14,15 +14,11 @@ async function main(canvas) {
   }
 
   let vertexShader = gl.createShader(gl.VERTEX_SHADER);
-  let vertexShaderFile = await fetch("../glsl/vertexShader.glvs");
-  let vertexShaderSource = await vertexShaderFile.text();
-  gl.shaderSource(vertexShader, await vertexShaderSource);
+  gl.shaderSource(vertexShader, await fetch("../glsl/vertexShader.glvs").text());
   gl.compileShader(await vertexShader);
   
   let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-  let fragmentShaderFile = await fetch("../glsl/fragmentShader.glfs");
-  let fragmentShaderSource = await fragmentShaderFile.text();
-  gl.shaderSource(fragmentShader, await fragmentShaderSource);
+  gl.shaderSource(fragmentShader, await fetch("../glsl/fragmentShader.glfs").text());
   gl.compileShader(await fragmentShader);
   
   let program = gl.createProgram();
@@ -31,9 +27,9 @@ async function main(canvas) {
   gl.linkProgram(await program);
 
   let positions = new Float32Array([
-    0, 0, 0,
-    0, 0.5, 0,
-    0.7, 0, 0
+    0.1, 0, 0,
+    0.2, 0.5, 0,
+    0.7, 0.3, 0
   ]);
   
   let vbo = gl.createBuffer();
