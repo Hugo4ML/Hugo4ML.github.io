@@ -14,7 +14,7 @@ if(!gl) {
   gl.compileShader(vertexShader);
   let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
   fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(source => gl.shaderSource(fragmentShader, source));
-  fetch("../glsl/vertexShader.glvs").then(file => file.text()).then(console.log);
+  fetch("../glsl/fragmentShader.glfs").then(file => file.text()).then(console.log);
   gl.compileShader(fragmentShader);
   
   let program = gl.createProgram();
