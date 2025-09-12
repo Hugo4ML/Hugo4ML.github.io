@@ -1,7 +1,41 @@
 "use strict";
 
-document.title = "(0.20) Simple project";
+document.title = "(0.21) Simple project";
 const canvas = document.getElementById("canvas");
+
+function Keyboard() {
+  let keys = [
+    "Unidentified",
+    "Cancel", "Backspace", "Tab", "Clear", "Enter",
+    "Shift", "Control", "Alt",
+    "Pause", "CapsLock", "Escape",
+    "henkan", "muhenkan",
+    "",
+    "PageUp", "PageDown",
+    "End", "Home",
+    "ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown",
+    "Select", "Print", "Execute", "F13", "Insert", "Delete", "Help",
+    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+    ":", ";", "<", "=", "-", "@",
+    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+  ];
+  
+}
+
+Keyboard.prototype.keydown(event) {
+  this[event.key] = {
+    down: true,
+    up: false
+  }
+}
+Keyboard.prototype.keyup(event) {
+  this[event.key] = {
+    down: false,
+    up: true
+  }
+}
+
+document.addEventListener("keyboard", )
 
 async function main(canvas) {
   /*
