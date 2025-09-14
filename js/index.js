@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.22) Simple project";
+document.title = "(0.23) Simple project";
 const canvas = document.getElementById("canvas");
 
 let color = [0.5, 0.3, 0.4];
@@ -44,7 +44,7 @@ Keyboard.prototype.keyup = function(event) {
   }
 }
 
-keyboard = new Keyboard();
+let keyboard = new Keyboard();
 document.addEventListener("keydown", keyboard.keydown);
 document.addEventListener("keyup", keyboard.keyup);
 
