@@ -3,6 +3,8 @@
 document.title = "(0.21) Simple project";
 const canvas = document.getElementById("canvas");
 
+let color = [0.5, 0.3, 0.4];
+
 function Keyboard() {
   let keys = [
     "Unidentified",
@@ -27,6 +29,13 @@ Keyboard.prototype.keydown(event) {
     down: true,
     up: false
   }
+  if(event.key == "@") {
+    color[0] += 0.25;
+  }
+  
+  if(event.key == "2") {
+    color[1] += 0.25;
+  }
 }
 Keyboard.prototype.keyup(event) {
   this[event.key] = {
@@ -35,7 +44,9 @@ Keyboard.prototype.keyup(event) {
   }
 }
 
-document.addEventListener("keyboard", )
+keyboard = new Keyboard();
+document.addEventListener("keydown", keyboard.keydown);
+document.addEventListener("keyup", keyboard.keyup);
 
 async function main(canvas) {
   /*
@@ -79,7 +90,8 @@ async function main(canvas) {
 
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
   
-  gl.clearColor(0.5, 0.3, 0.4, 1.0);
+  //gl.clearColor(0.5, 0.3, 0.4, 1.0);
+  gl.clearColor(color[0], color[1], color[2], 1.0);
   gl.clear(gl.COLOR_BUFFER_BIT);
 
   gl.useProgram(await program);
