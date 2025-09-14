@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.21) Simple project";
+document.title = "(0.22) Simple project";
 const canvas = document.getElementById("canvas");
 
 let color = [0.5, 0.3, 0.4];
@@ -24,7 +24,7 @@ function Keyboard() {
   
 }
 
-Keyboard.prototype.keydown(event) {
+Keyboard.prototype.keydown = function(event) {
   this[event.key] = {
     down: true,
     up: false
@@ -37,7 +37,7 @@ Keyboard.prototype.keydown(event) {
     color[1] += 0.25;
   }
 }
-Keyboard.prototype.keyup(event) {
+Keyboard.prototype.keyup = function(event) {
   this[event.key] = {
     down: false,
     up: true
