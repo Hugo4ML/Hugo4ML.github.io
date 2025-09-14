@@ -94,8 +94,13 @@ async function main(canvas) {
   gl.clearColor(color[0], color[1], color[2], 1.0);
   gl.clear(gl.COLOR_BUFFER_BIT);
 
-  gl.useProgram(await program);
-  gl.drawArrays(gl.TRIANGLES, 0, 3);
+  //gl.useProgram(await program);
+  //gl.drawArrays(gl.TRIANGLES, 0, 3);
+
+  setInterval(function() {
+    gl.clearColor(color[0], color[1], color[2], 1.0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+  }, 33);
 }
 
 main(canvas);
