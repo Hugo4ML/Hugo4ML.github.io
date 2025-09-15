@@ -109,7 +109,7 @@ let array = [];
 
 document.addEventListener("keydown", function(event) {
   let included = false;
-  for(let item in array) {
+  for(let item of array) {
     if(item.keyCode == event.keyCode) {
       included = true;
     }
