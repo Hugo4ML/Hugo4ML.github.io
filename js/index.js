@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.31) Simple project";
+document.title = "(0.32) Simple project";
 const canvas = document.getElementById("canvas");
 
 function Keyboard() {
@@ -245,11 +245,21 @@ function Keyboard() {
     };
     this[key.keyCode] = this[key.key];
     console.log(key.key + ": " + key.keyCode);
-    console.log("down = " + this[key.key].down + "    " + "up: " + this[key.key].up);
+    console.log("down = " + this[key.key].down + "    " + "up = " + this[key.key].up);
   }
 }
 
 Keyboard.prototype.keydown = function(event) {
+  this[event.key].down = true;
+  this[event.key].up = false;
+}
+
+Keyboard.prototype.keyup = function(event) {
+  this[event.key].down = false;
+  this[event.key].up = true;
+}
+
+/*Keyboard.prototype.keydown = function(event) {
   this[event.key].down = true;
   this[event.key].up = false;
   console.log(this[event.key]);
@@ -258,11 +268,11 @@ Keyboard.prototype.keydown = function(event) {
 Keyboard.prototype.keyup = function(event) {
   this[event.key].down = false;
   this[event.key].up = true;
-}
+}*/
 
-let keyboard = new Keyboard();
-document.addEventListener("keydown", keyboard.keydown);
-document.addEventListener("keyup", keyboard.keyup);
+let input = new Keyboard();
+document.addEventListener("keydown", input.keydown);
+document.addEventListener("keyup", input.keyup);
 
 let color = [0.5, 0.3, 0.4];
 
