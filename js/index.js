@@ -120,8 +120,8 @@ document.addEventListener("keydown", function(event) {
       keyCode: event.keyCode
     });
     array.sort((a, b) => a.keyCode - b.keyCode);
-    console.log(array);
   }
+  console.log(array);
 });
 
 console.log("HOIIII");
