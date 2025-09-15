@@ -1,5 +1,5 @@
 "use strict";
-
+/*
 document.title = "(0.23) Simple project";
 const canvas = document.getElementById("canvas");
 
@@ -51,7 +51,7 @@ document.addEventListener("keyup", keyboard.keyup);
 async function main(canvas) {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
-  */
+  
   const gl = canvas.getContext("webgl2");
   if(!gl) {
     console.log("Failed to create a webGL2 context.");
@@ -103,5 +103,23 @@ async function main(canvas) {
   }, 33);
 }
 
-main(canvas);
+main(canvas);*/
 
+let array = [];
+
+document.addEventListener("keydown", function(event) {
+  let included = false;
+  for(let item in array) {
+    if(item.keyCode == event.keyCode) {
+      included = true;
+    }
+  }
+  if(included) {
+    array.push({
+      key: event.key,
+      keyCode: event.keyCode
+    });
+    array.sort((a, b) => a.keyCode - b.keyCode);
+    console.log(array);
+  }
+});
