@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.24) Simple project";
+document.title = "(0.25) Simple project";
 const canvas = document.getElementById("canvas");
 
 function Keyboard() {
@@ -254,6 +254,7 @@ Keyboard.prototype.keydown = function(event) {
   }
   console.log(event.key);
 }
+
 Keyboard.prototype.keyup = function(event) {
   this[event.key] = {
     down: false,
@@ -317,6 +318,7 @@ async function main(canvas) {
   //gl.drawArrays(gl.TRIANGLES, 0, 3);
 
   setInterval(function() {
+    console.log("Interval");
     if(keyboard["ArrowUp"].down) {
       color[0] += 0.025;
     }
