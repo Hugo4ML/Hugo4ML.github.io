@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.27) Simple project";
+document.title = "(0.28) Simple project";
 const canvas = document.getElementById("canvas");
 
 function Keyboard() {
@@ -248,18 +248,14 @@ function Keyboard() {
 }
 
 Keyboard.prototype.keydown = function(event) {
-  this[event.key] = {
-    down: true,
-    up: false
-  }
+  this[event.key].down = true;
+  this[event.key].up = false;
   console.log(event.key);
 }
 
 Keyboard.prototype.keyup = function(event) {
-  this[event.key] = {
-    down: false,
-    up: true
-  }
+  this[event.key].down = false;
+  this[event.key].up = true;
 }
 
 let keyboard = new Keyboard();
