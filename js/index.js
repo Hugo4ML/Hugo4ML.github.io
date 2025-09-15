@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.29) Simple project";
+document.title = "(0.30) Simple project";
 const canvas = document.getElementById("canvas");
 
 function Keyboard() {
@@ -239,23 +239,25 @@ function Keyboard() {
     }
   ];
   for(let key of keys) {
-    this[key.keyCode] = {
+    this[key.key] = {
       down: false,
       up: true
     };
-    this[key.key] = this[key.keyCode];
+    this[key.keyCode] = this[key.key];
+    console.log(key.key + ": " + key.keyCode);
+    console.log("down = " + this[key].down + "    " + "up: " + this[key.key].up);
   }
 }
 
 Keyboard.prototype.keydown = function(event) {
-  this[event.keyCode].down = true;
-  this[event.keyCode].up = false;
-  console.log(event.key);
+  this[event.key].down = true;
+  this[event.key].up = false;
+  console.log(this[event.key]);
 }
 
 Keyboard.prototype.keyup = function(event) {
-  this[event.keyCode].down = false;
-  this[event.keyCode].up = true;
+  this[event.key].down = false;
+  this[event.key].up = true;
 }
 
 let keyboard = new Keyboard();
@@ -325,8 +327,7 @@ async function main(canvas) {
     }
 
     if(keyboard[39].up) {
-      console.log("RIG");
-      color[0] += 0.025;
+      color[1] += 0.025;
     }
     
     gl.clearColor(color[0], color[1], color[2], 1.0);
