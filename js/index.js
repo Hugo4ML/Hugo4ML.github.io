@@ -114,7 +114,7 @@ document.addEventListener("keydown", function(event) {
       included = true;
     }
   }
-  if(included) {
+  if(!included) {
     array.push({
       key: event.key,
       keyCode: event.keyCode
