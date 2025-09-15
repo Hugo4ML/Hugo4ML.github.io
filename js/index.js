@@ -123,3 +123,5 @@ document.addEventListener("keydown", function(event) {
     console.log(array);
   }
 });
+
+console.log("HOIIII");
