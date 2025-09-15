@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.30) Simple project";
+document.title = "(0.31) Simple project";
 const canvas = document.getElementById("canvas");
 
 function Keyboard() {
@@ -245,7 +245,7 @@ function Keyboard() {
     };
     this[key.keyCode] = this[key.key];
     console.log(key.key + ": " + key.keyCode);
-    console.log("down = " + this[key].down + "    " + "up: " + this[key.key].up);
+    console.log("down = " + this[key.key].down + "    " + "up: " + this[key.key].up);
   }
 }
 
