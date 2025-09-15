@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.26) Simple project";
+document.title = "(0.27) Simple project";
 const canvas = document.getElementById("canvas");
 
 function Keyboard() {
@@ -322,6 +322,17 @@ async function main(canvas) {
       console.log("Interval");
       color[0] += 0.025;
     }
+    
+    if(keyboard[37].down) {
+      console.log("37");
+      color[0] += 0.025;
+    }
+
+    if(keyboard[39].up) {
+      console.log("RIG");
+      color[0] += 0.025;
+    }
+    
     gl.clearColor(color[0], color[1], color[2], 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
   }, 33);
