@@ -271,8 +271,8 @@ Keyboard.prototype.keyup = function(event) {
 }*/
 
 let input = new Keyboard();
-document.addEventListener("keydown", input.keydown);
-document.addEventListener("keyup", input.keyup);
+document.addEventListener("keydown", event => input.keydown(event));
+document.addEventListener("keyup", event => input.keyup(event));
 
 let color = [0.5, 0.3, 0.4];
 
