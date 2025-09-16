@@ -1,11 +1,11 @@
 "use strict";
 
-import * as keyboard from "./keyboard.js";
+import {Keyboard} from "./keyboard.js";
 
 document.title = "(0.36) Simple project";
 const canvas = document.getElementById("canvas");
 
-let keyboardInput = new keyboard.Keyboard();
+let keyboardInput = new Keyboard();
 document.addEventListener("keydown", event => keyboardInput.keydown(event));
 document.addEventListener("keyup", event => keyboardInput.keyup(event));
 
