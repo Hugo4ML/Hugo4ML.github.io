@@ -14,6 +14,7 @@ function resize() {
   canvas.width = minimum * 16, canvas.height = minimum * 9;
   canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px";
   canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
+  canvas.style.borderWidth = minimum / 16 + "px";
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 }
 resize();
