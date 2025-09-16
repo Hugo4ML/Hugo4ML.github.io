@@ -2,14 +2,14 @@
 
 import * as input from "./input.js";
 
-document.title = "(0.40) Simple project";
+document.title = "(0.41) Simple project";
 const canvas = document.getElementById("canvas");
 
 function resize() {
   /*
   Resize page contents.
   */
-  console.log(window.innerWidth + ", " window.innerHeight);
+  console.log(window.innerWidth + ", " + window.innerHeight);
   let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
   canvas.width = minimum * 16;
   canvas.height = minimum * 9;
