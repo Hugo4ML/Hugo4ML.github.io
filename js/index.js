@@ -1,6 +1,6 @@
 "use strict";
 
-document.title = "(0.33) Simple project";
+document.title = "(0.34) Simple project";
 const canvas = document.getElementById("canvas");
 
 function Keyboard() {
@@ -244,8 +244,6 @@ function Keyboard() {
       up: true
     };
     this[key.keyCode] = this[key.key];
-    console.log(key.key + ": " + key.keyCode);
-    console.log("down = " + this[key.key].down + "    " + "up = " + this[key.key].up);
   }
 }
 
@@ -259,20 +257,9 @@ Keyboard.prototype.keyup = function(event) {
   this[event.key].up = true;
 }
 
-/*Keyboard.prototype.keydown = function(event) {
-  this[event.key].down = true;
-  this[event.key].up = false;
-  console.log(this[event.key]);
-}
-
-Keyboard.prototype.keyup = function(event) {
-  this[event.key].down = false;
-  this[event.key].up = true;
-}*/
-
-let input = new Keyboard();
-document.addEventListener("keydown", event => input.keydown(event));
-document.addEventListener("keyup", event => input.keyup(event));
+let keyboard = new Keyboard();
+document.addEventListener("keydown", event => keyboard.keydown(event));
+document.addEventListener("keyup", event => keyboard.keyup(event));
 
 let color = [0.5, 0.3, 0.4];
 
@@ -326,18 +313,21 @@ async function main(canvas) {
   //gl.drawArrays(gl.TRIANGLES, 0, 3);
 
   setInterval(function() {
-    if(input["ArrowUp"].down) {
+    if(keyboard["ArrowUp"].down) {
       console.log("Interval");
       color[0] += 0.025;
     }
-    
-    if(input[37].down) {
-      console.log("37");
-      color[0] += 0.025;
+    if(keyboard["ArrowDown"].down) {
+      console.log("Interval");
+      color[0] -= 0.025;
     }
-
-    if(input[39].up) {
+    if(keyboard["ArrowLeft"].down) {
+      console.log("Interval");
       color[1] += 0.025;
+    }
+    if(keyboard["ArrowRight"].down) {
+      console.log("Interval");
+      color[1] -= 0.025;
     }
     
     gl.clearColor(color[0], color[1], color[2], 1.0);
