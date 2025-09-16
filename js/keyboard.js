@@ -253,3 +253,5 @@ Keyboard.prototype.keyup = function(event) {
   this[event.key].down = false;
   this[event.key].up = true;
 }
+
+export Keyboard;
