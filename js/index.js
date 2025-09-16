@@ -1,13 +1,13 @@
 "use strict";
 
-import {Keyboard} from "./keyboard.js";
+import * as input from "./input.js";
 
-document.title = "(0.37) Simple project";
+document.title = "(0.38) Simple project";
 const canvas = document.getElementById("canvas");
 
-let keyboardInput = new Keyboard();
-document.addEventListener("keydown", event => keyboardInput.keydown(event));
-document.addEventListener("keyup", event => keyboardInput.keyup(event));
+let keyboard = new input.Keyboard();
+document.addEventListener("keydown", event => keyboard.keydown(event));
+document.addEventListener("keyup", event => keyboard.keyup(event));
 
 let color = [0.5, 0.3, 0.4];
 
@@ -61,19 +61,19 @@ async function main(canvas) {
   //gl.drawArrays(gl.TRIANGLES, 0, 3);
 
   setInterval(function() {
-    if(keyboardInput["ArrowUp"].down) {
+    if(keyboard["ArrowUp"].down) {
       console.log("Interval");
       color[0] += 0.025;
     }
-    if(keyboardInput["ArrowDown"].down) {
+    if(keyboard["ArrowDown"].down) {
       console.log("Interval");
       color[0] -= 0.025;
     }
-    if(keyboardInput["ArrowLeft"].down) {
+    if(keyboard["ArrowLeft"].down) {
       console.log("Interval");
       color[1] += 0.025;
     }
-    if(keyboardInput["ArrowRight"].down) {
+    if(keyboard["ArrowRight"].down) {
       console.log("Interval");
       color[1] -= 0.025;
     }
