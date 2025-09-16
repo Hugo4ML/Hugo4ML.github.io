@@ -2,7 +2,7 @@
 
 import * as input from "./input.js";
 
-document.title = "(0.38) Simple project";
+document.title = "(0.39) Simple project";
 const canvas = document.getElementById("canvas");
 canvas.width = 1120;
 canvas.height = 630;
