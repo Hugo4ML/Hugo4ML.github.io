@@ -4,6 +4,8 @@ import * as input from "./input.js";
 
 document.title = "(0.38) Simple project";
 const canvas = document.getElementById("canvas");
+canvas.width = 1120;
+canvas.height = 630;
 
 let keyboard = new input.Keyboard();
 document.addEventListener("keydown", event => keyboard.keydown(event));
