@@ -1,6 +1,6 @@
 "use strict";
 
-export default function Keyboard() {
+export function Keyboard() {
   let keys = [
     {
         key: "Backspace",
