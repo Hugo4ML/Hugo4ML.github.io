@@ -2,21 +2,21 @@
 
 import * as input from "./input.js";
 
-document.title = "(0.42) Simple project";
+document.title = "(0.43) Simple project";
 const canvas = document.getElementById("canvas");
 
 function resize() {
   /*
   Resize page contents.
   */
-  let innerWidth = document.documentElement.clientWidth;
-  let innerHeight = document.documentElement.clientHeight;
-  let minimum = innerWidth / 16 <= innerHeight / 9? innerWidth / 16: innerHeight / 9;
+  let clientWidth = document.documentElement.clientWidth, clientHeight = document.documentElement.clientHeight;
+  let minimum = clientWidth / 16 <= clientHeight / 9? clientWidth / 16: clientHeight / 9;
   canvas.width = minimum * 16;
   canvas.height = minimum * 9;
+  console.log(clientWidth + ", " + clientHeight);
 }
 resize();
-document.addEventListener("resize", resize);
+window.addEventListener("resize", resize);
 
 let keyboard = new input.Keyboard();
 document.addEventListener("keydown", event => keyboard.keydown(event));
