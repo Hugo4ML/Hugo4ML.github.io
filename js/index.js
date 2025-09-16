@@ -2,10 +2,28 @@
 
 import * as input from "./input.js";
 
-window.document.title = "(0.47) Simple project";
+window.document.title = "(0.48) Simple project";
 const canvas = window.document.getElementById("canvas");
 const gl = canvas.getContext("webgl2");
 
+function resizeCanvasToDisplaySize() {
+  //DEMO TO SEE IF THIS REMOVES FLICKERING.
+  // Lookup the size the browser is displaying the canvas in CSS pixels.
+  const displayWidth  = canvas.clientWidth;
+  const displayHeight = canvas.clientHeight;
+ 
+  // Check if the canvas is not the same size.
+  const needResize = canvas.width  !== displayWidth ||
+                     canvas.height !== displayHeight;
+ 
+  if (needResize) {
+    // Make the canvas the same size
+    canvas.width  = displayWidth;
+    canvas.height = displayHeight;
+  }
+ 
+  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+}
 function resize() {
   /*
   Resize page contents.
@@ -17,8 +35,9 @@ function resize() {
   canvas.style.borderWidth = minimum / 16 + "px";
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 }
-resize();
-window.addEventListener("resize", resize);
+//resize();
+resizeCanvasToDisplaySize()
+window.addEventListener("resize", resizeCanvasToDisplaySize);
 
 let keyboard = new input.Keyboard();
 window.addEventListener("keydown", event => keyboard.keydown(event));
