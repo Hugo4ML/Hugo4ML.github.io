@@ -2,14 +2,14 @@
 
 import * as input from "./input.js";
 
-document.title = "(0.43) Simple project";
-const canvas = document.getElementById("canvas");
+window.document.title = "(0.44) Simple project";
+const canvas = window.document.getElementById("canvas");
 
 function resize() {
   /*
   Resize page contents.
   */
-  let clientWidth = document.documentElement.clientWidth, clientHeight = document.documentElement.clientHeight;
+  let clientWidth = window.document.documentElement.clientWidth, clientHeight = window.document.documentElement.clientHeight;
   let minimum = clientWidth / 16 <= clientHeight / 9? clientWidth / 16: clientHeight / 9;
   canvas.width = minimum * 16;
   canvas.height = minimum * 9;
@@ -19,8 +19,8 @@ resize();
 window.addEventListener("resize", resize);
 
 let keyboard = new input.Keyboard();
-document.addEventListener("keydown", event => keyboard.keydown(event));
-document.addEventListener("keyup", event => keyboard.keyup(event));
+window.addEventListener("keydown", event => keyboard.keydown(event));
+window.addEventListener("keyup", event => keyboard.keyup(event));
 
 let color = [0.5, 0.3, 0.4];
 
@@ -100,7 +100,7 @@ main(canvas);
 /*
 let array = [];
 
-document.addEventListener("keydown", function(event) {
+window.addEventListener("keydown", function(event) {
   let included = false;
   for(let item of array) {
     if(item.keyCode == event.keyCode) {
