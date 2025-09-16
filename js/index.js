@@ -2,7 +2,7 @@
 
 import * as keyboard from "./keyboard.js";
 
-document.title = "(0.35) Simple project";
+document.title = "(0.36) Simple project";
 const canvas = document.getElementById("canvas");
 
 let keyboardInput = new keyboard.Keyboard();
