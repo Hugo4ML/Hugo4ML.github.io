@@ -2,8 +2,9 @@
 
 import * as input from "./input.js";
 
-window.document.title = "(0.45) Simple project";
+window.document.title = "(0.46) Simple project";
 const canvas = window.document.getElementById("canvas");
+const gl = canvas.getContext("webgl2");
 
 function resize() {
   /*
@@ -13,6 +14,7 @@ function resize() {
   canvas.width = minimum * 16, canvas.height = minimum * 9;
   canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px";
   canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
+  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 }
 resize();
 window.addEventListener("resize", resize);
@@ -27,7 +29,6 @@ async function main(canvas) {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
   */
-  const gl = canvas.getContext("webgl2");
   if(!gl) {
     console.log("Failed to create a webGL2 context.");
     return;
