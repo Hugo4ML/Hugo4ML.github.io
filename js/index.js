@@ -4,8 +4,19 @@ import * as input from "./input.js";
 
 document.title = "(0.39) Simple project";
 const canvas = document.getElementById("canvas");
-canvas.width = 1120;
-canvas.height = 630;
+
+function resize() {
+  /*
+  Resize page contents.
+  */
+  let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
+  canvas.width = minimum * 16;
+  canvas.height = minimum * 9;
+  canvas.style.left = (window.innerWidth / 2 - canvas.width / 2) + "px";
+  canvas.style.top = (window.innerHeight / 2 - canvas.height / 2) + "px";
+}
+resize();
+document.addEventListener("resize", resize);
 
 let keyboard = new input.Keyboard();
 document.addEventListener("keydown", event => keyboard.keydown(event));
