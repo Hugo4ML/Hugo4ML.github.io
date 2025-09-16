@@ -235,7 +235,7 @@ export function Keyboard() {
         keyCode: 225
     }
   ];
-  for(let key of keys) {
+  for(const key of keys) {
     this[key.key] = {
       down: false,
       up: true
