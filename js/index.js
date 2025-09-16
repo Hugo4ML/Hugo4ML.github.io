@@ -2,19 +2,18 @@
 
 import * as input from "./input.js";
 
-document.title = "(0.41) Simple project";
+document.title = "(0.42) Simple project";
 const canvas = document.getElementById("canvas");
 
 function resize() {
   /*
   Resize page contents.
   */
-  console.log(window.innerWidth + ", " + window.innerHeight);
-  let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
+  let innerWidth = document.documentElement.clientWidth;
+  let innerHeight = document.documentElement.clientHeight;
+  let minimum = innerWidth / 16 <= innerHeight / 9? innerWidth / 16: innerHeight / 9;
   canvas.width = minimum * 16;
   canvas.height = minimum * 9;
-  canvas.style.left = (window.innerWidth / 2 - canvas.width / 2) + "px";
-  canvas.style.top = (window.innerHeight / 2 - canvas.height / 2) + "px";
 }
 resize();
 document.addEventListener("resize", resize);
