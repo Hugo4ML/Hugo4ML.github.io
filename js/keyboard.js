@@ -1,6 +1,6 @@
 "use strict";
 
-function Keyboard() {
+export default function Keyboard() {
   let keys = [
     {
         key: "Backspace",
@@ -253,5 +253,3 @@ Keyboard.prototype.keyup = function(event) {
   this[event.key].down = false;
   this[event.key].up = true;
 }
-
-export Keyboard;
