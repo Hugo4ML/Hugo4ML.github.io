@@ -252,6 +252,7 @@ Keyboard.prototype.keydown = function(event) {
 }
 
 Keyboard.prototype.keyup = function(event) {
+  console.log("CALLED");
   this[event.key].down = false;
   this[event.key].up = true;
   this.keysDown -= 1;
