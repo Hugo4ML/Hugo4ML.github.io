@@ -95,22 +95,3 @@ async function main(canvas) {
 }
 
 main(canvas);
-/*
-let array = [];
-
-window.addEventListener("keydown", function(event) {
-  let included = false;
-  for(let item of array) {
-    if(item.keyCode == event.keyCode) {
-      included = true;
-    }
-  }
-  if(!included) {
-    array.push({
-      key: event.key,
-      keyCode: event.keyCode
-    });
-    array.sort((a, b) => a.keyCode - b.keyCode);
-  }
-  console.log(array);
-});*/
