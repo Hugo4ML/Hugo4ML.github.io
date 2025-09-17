@@ -2,7 +2,7 @@
 
 import * as input from "./input.js";
 
-window.document.title = "(0.49) Simple project";
+window.document.title = "(0.50) Simple project";
 const canvas = window.document.getElementById("canvas");
 const gl = canvas.getContext("webgl2");
 
@@ -35,7 +35,7 @@ function resize() {
   canvas.style.borderWidth = minimum / 16 + "px";
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 }
-//resize();
+resize();
 //resizeCanvasToDisplaySize()
 //window.addEventListener("resize", resizeCanvasToDisplaySize);
 
@@ -94,8 +94,7 @@ async function main(canvas) {
   //gl.drawArrays(gl.TRIANGLES, 0, 3);
 
   setInterval(function() {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
+    resize();
     if(keyboard["ArrowUp"].down) {
       console.log("Interval");
       color[0] += 0.025;
