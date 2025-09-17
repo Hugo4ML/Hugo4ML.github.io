@@ -72,22 +72,12 @@ async function main(canvas) {
       canvas.style.borderWidth = minimum / 32 + "px";
       deltaInnerWidth = window.innerWidth, deltaInnerHeight = window.innerHeight;
       gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-    }
-    if(keyboard["ArrowUp"].down) {
-      console.log("Interval");
+    };
+    
+    if(keyboard.keysDown) {
       color[0] += 0.025;
-    }
-    if(keyboard["ArrowDown"].down) {
-      console.log("Interval");
+    } else {
       color[0] -= 0.025;
-    }
-    if(keyboard["ArrowLeft"].down) {
-      console.log("Interval");
-      color[1] += 0.025;
-    }
-    if(keyboard["ArrowRight"].down) {
-      console.log("Interval");
-      color[1] -= 0.025;
     }
     
     gl.clearColor(color[0], color[1], color[2], 1.0);
