@@ -2,7 +2,7 @@
 
 import * as input from "./input.js";
 
-window.document.title = "(0.54) Simple project";
+window.document.title = "(0.55) Simple project";
 const canvas = window.document.getElementById("canvas");
 const gl = canvas.getContext("webgl2");
 
@@ -75,10 +75,12 @@ async function main(canvas) {
     };
     
     if(keyboard.keysDown) {
+      console.log("DOWN");
       if(color[0] < 255) {
         color[0] += 0.025;
       }
     } else {
+      console.log("UP");
       if(color > 0) {
         color[0] -= 0.025;
       }
