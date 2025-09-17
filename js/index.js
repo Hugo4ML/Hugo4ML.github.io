@@ -63,12 +63,12 @@ async function main(canvas) {
   let deltaInnerWidth = undefined, deltaInnerHeight = undefined;
   setInterval(function() {
     if(deltaInnerWidth !== window.innerWidth || deltaInnerHeight !== window.innerHeight) {
+      let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
       if(canvas.width !== window.innerWidth && canvas.height !== window.innerHeight) {
         /*
         Resize page contents.
         */
         console.log("RESIZE");
-        let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
         canvas.width = minimum * 16, canvas.height = minimum * 9;
         gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
       }
