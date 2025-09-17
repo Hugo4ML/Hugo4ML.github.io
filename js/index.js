@@ -63,13 +63,14 @@ async function main(canvas) {
   setInterval(function() {
     if(canvas.width != window.innerWidth && canvas.height != window.innerHeight) {
       /*
-    Resize page contents.
-    */
-    let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
-    canvas.width = minimum * 16, canvas.height = minimum * 9;
-    canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px", canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
-    canvas.style.borderWidth = minimum / 16 + "px";
-    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+      Resize page contents.
+      */
+      console.log("RESIZE");
+      let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
+      canvas.width = minimum * 16, canvas.height = minimum * 9;
+      canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px", canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
+      canvas.style.borderWidth = minimum / 16 + "px";
+      gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     }
     if(keyboard["ArrowUp"].down) {
       console.log("Interval");
