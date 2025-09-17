@@ -2,7 +2,7 @@
 
 import * as input from "./input.js";
 
-window.document.title = "(0.57) Simple project";
+window.document.title = "(0.58) Simple project";
 const canvas = window.document.getElementById("canvas");
 const gl = canvas.getContext("webgl2");
 
@@ -78,17 +78,13 @@ async function main(canvas) {
       if(color[0] < 255) {
         color[0] += 0.025;
       }
-    } else {
-      if(color > 0) {
+    }
+    
+    if(!keyboard.keysDown) {
+      if(color[0] > 0) {
         color[0] -= 0.025;
       }
     }
-    
-    /*if(!keyboard.keysDown) {
-      if(color[0] > 0) {
-        color[0] -= 0.0125;
-      }
-    }*/
     
     gl.clearColor(color[0], color[1], color[2], 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
