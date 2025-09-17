@@ -2,7 +2,7 @@
 
 import * as input from "./input.js";
 
-window.document.title = "(0.52) Simple project";
+window.document.title = "(0.53) Simple project";
 const canvas = window.document.getElementById("canvas");
 const gl = canvas.getContext("webgl2");
 
@@ -59,18 +59,25 @@ async function main(canvas) {
 
   //gl.useProgram(await program);
   //gl.drawArrays(gl.TRIANGLES, 0, 3);
-
+  
+  let deltaInnerWidth = undefined, deltaInnerHeight = undefined;
   setInterval(function() {
-    if(canvas.width != window.innerWidth && canvas.height != window.innerHeight) {
+    if(deltaInnerWidth !== window.innerWidth || deltaInnerHeight !== window.innerHeight) {
+      if(canvas.width !== window.innerWidth && canvas.height !== window.innerHeight) {
+        /*
+        Resize page contents.
+        */
+        console.log("RESIZE");
+        let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
+        canvas.width = minimum * 16, canvas.height = minimum * 9;
+        gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+      }
       /*
-      Resize page contents.
+      Move page contents.
       */
-      console.log("RESIZE");
-      let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
-      canvas.width = minimum * 16, canvas.height = minimum * 9;
       canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px", canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
       canvas.style.borderWidth = minimum / 16 + "px";
-      gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+      deltaInnerWidth = window.innerWidth, deltaInnerHeight = window.innerHeight;
     }
     if(keyboard["ArrowUp"].down) {
       console.log("Interval");
