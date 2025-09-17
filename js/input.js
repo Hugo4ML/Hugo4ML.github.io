@@ -246,14 +246,17 @@ export function Keyboard() {
 }
 
 Keyboard.prototype.keydown = function(event) {
-  this[event.key].down = true;
-  this[event.key].up = false;
-  this.keysDown += 1;
+  if(this[event.key].up) {
+    this[event.key].down = true;
+    this[event.key].up = false;
+    this.keysDown += 1;
+  }
 }
 
 Keyboard.prototype.keyup = function(event) {
-  console.log("CALLED");
-  this[event.key].down = false;
-  this[event.key].up = true;
-  this.keysDown -= 1;
+  if(this[event.key].down) {
+    this[event.key].down = false;
+    this[event.key].up = true;
+    this.keysDown -= 1;
+  }
 }
