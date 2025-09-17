@@ -36,7 +36,7 @@ function resize() {
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 }
 //resize();
-resizeCanvasToDisplaySize()
+//resizeCanvasToDisplaySize()
 //window.addEventListener("resize", resizeCanvasToDisplaySize);
 
 let keyboard = new input.Keyboard();
@@ -94,7 +94,8 @@ async function main(canvas) {
   //gl.drawArrays(gl.TRIANGLES, 0, 3);
 
   setInterval(function() {
-    resizeCanvasToDisplaySize()
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
     if(keyboard["ArrowUp"].down) {
       console.log("Interval");
       color[0] += 0.025;
