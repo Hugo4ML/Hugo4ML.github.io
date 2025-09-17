@@ -75,9 +75,13 @@ async function main(canvas) {
     };
     
     if(keyboard.keysDown) {
-      color[0] += 0.025;
+      if(color[0] < 255) {
+        color[0] += 0.025;
+      }
     } else {
-      color[0] -= 0.025;
+      if(color > 0) {
+        color[0] -= 0.025;
+      }
     }
     
     gl.clearColor(color[0], color[1], color[2], 1.0);
