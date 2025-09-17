@@ -2,7 +2,7 @@
 
 import * as input from "./input.js";
 
-window.document.title = "(0.48) Simple project";
+window.document.title = "(0.49) Simple project";
 const canvas = window.document.getElementById("canvas");
 const gl = canvas.getContext("webgl2");
 
