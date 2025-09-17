@@ -2,7 +2,7 @@
 
 import * as input from "./input.js";
 
-window.document.title = "(0.53) Simple project";
+window.document.title = "(0.54) Simple project";
 const canvas = window.document.getElementById("canvas");
 const gl = canvas.getContext("webgl2");
 
@@ -76,7 +76,7 @@ async function main(canvas) {
       Move page contents.
       */
       canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px", canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
-      canvas.style.borderWidth = minimum / 16 + "px";
+      canvas.style.borderWidth = minimum / 32 + "px";
       deltaInnerWidth = window.innerWidth, deltaInnerHeight = window.innerHeight;
     }
     if(keyboard["ArrowUp"].down) {
