@@ -2,42 +2,9 @@
 
 import * as input from "./input.js";
 
-window.document.title = "(0.50) Simple project";
+window.document.title = "(0.51) Simple project";
 const canvas = window.document.getElementById("canvas");
 const gl = canvas.getContext("webgl2");
-
-function resizeCanvasToDisplaySize() {
-  //DEMO TO SEE IF THIS REMOVES FLICKERING.
-  // Lookup the size the browser is displaying the canvas in CSS pixels.
-  const displayWidth  = canvas.clientWidth;
-  const displayHeight = canvas.clientHeight;
- 
-  // Check if the canvas is not the same size.
-  const needResize = canvas.width  !== displayWidth ||
-                     canvas.height !== displayHeight;
- 
-  if (needResize) {
-    // Make the canvas the same size
-    canvas.width  = displayWidth;
-    canvas.height = displayHeight;
-  }
- 
-  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-}
-function resize() {
-  /*
-  Resize page contents.
-  */
-  let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
-  canvas.width = minimum * 16, canvas.height = minimum * 9;
-  canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px";
-  canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
-  canvas.style.borderWidth = minimum / 16 + "px";
-  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-}
-resize();
-//resizeCanvasToDisplaySize()
-//window.addEventListener("resize", resizeCanvasToDisplaySize);
 
 let keyboard = new input.Keyboard();
 window.addEventListener("keydown", event => keyboard.keydown(event));
@@ -94,7 +61,16 @@ async function main(canvas) {
   //gl.drawArrays(gl.TRIANGLES, 0, 3);
 
   setInterval(function() {
-    resize();
+    if(canvas.width != window.innerWidth && canvas.height != window.innerHeight) {
+      /*
+    Resize page contents.
+    */
+    let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
+    canvas.width = minimum * 16, canvas.height = minimum * 9;
+    canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px", canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
+    canvas.style.borderWidth = minimum / 16 + "px";
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+    }
     if(keyboard["ArrowUp"].down) {
       console.log("Interval");
       color[0] += 0.025;
