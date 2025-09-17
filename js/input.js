@@ -241,15 +241,18 @@ export function Keyboard() {
       up: true
     };
     this[key.keyCode] = this[key.key];
+    this.keysDown = 0;
   }
 }
 
 Keyboard.prototype.keydown = function(event) {
   this[event.key].down = true;
   this[event.key].up = false;
+  this.keysDown += 1;
 }
 
 Keyboard.prototype.keyup = function(event) {
   this[event.key].down = false;
   this[event.key].up = true;
+  this.keysDown -= 1;
 }
