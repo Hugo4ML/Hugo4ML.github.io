@@ -57,15 +57,15 @@ async function main(canvas) {
   gl.clearColor(color[0], color[1], color[2], 1.0);
   gl.clear(gl.COLOR_BUFFER_BIT);
 
-  //gl.useProgram(await program);
-  //gl.drawArrays(gl.TRIANGLES, 0, 3);
+  gl.useProgram(await program);
+  gl.drawArrays(gl.TRIANGLES, 0, 3);
   
-  let deltaInnerWidth = undefined, deltaInnerHeight = undefined;
+  /*let deltaInnerWidth = undefined, deltaInnerHeight = undefined;
   setInterval(function() {
     if(deltaInnerWidth !== window.innerWidth || deltaInnerHeight !== window.innerHeight) {
       /*
       Resize page.
-      */
+      *//*
       let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
       canvas.width = minimum * 16, canvas.height = minimum * 9;
       canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px", canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
@@ -88,7 +88,7 @@ async function main(canvas) {
     
     gl.clearColor(color[0], color[1], color[2], 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
-  }, 33);
+  }, 33);*/
 }
 
 main(canvas);
