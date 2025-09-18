@@ -2,7 +2,7 @@
 
 import * as input from "./input.js";
 
-window.document.title = "(0.58) Simple project";
+window.document.title = "(0.59) Simple project";
 const canvas = window.document.getElementById("canvas");
 const gl = canvas.getContext("webgl2");
 
@@ -34,11 +34,11 @@ async function main(canvas) {
   gl.attachShader(program, await fragmentShader);
   gl.linkProgram(await program);
 
-  let positions = new Float32Array([
+  let positions = new Float32Array(
     0.1, 0, 0,
     0.2, 0.5, 0,
     0.7, 0.3, 0
-  ]);
+  );
   
   let vbo = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
