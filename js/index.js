@@ -61,7 +61,7 @@ async function main(canvas) {
   gl.drawArrays(gl.TRIANGLES, 0, 3);
   
   let deltaInnerWidth = undefined, deltaInnerHeight = undefined;
-  setInterval(function() {
+  setInterval(async function() {
     if(deltaInnerWidth !== window.innerWidth || deltaInnerHeight !== window.innerHeight) {
       /*
       Resize page.
