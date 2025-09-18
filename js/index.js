@@ -75,7 +75,7 @@ async function main(canvas) {
     };
     
     if(keyboard.keysDown) {
-      if(color[0] < 255) {
+      if(color[0] < 1) {
         color[0] += 0.025;
       }
     }
