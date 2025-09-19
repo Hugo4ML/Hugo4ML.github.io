@@ -32,8 +32,6 @@ async function main() {
   gl.attachShader(program, await fragmentShader);
   gl.linkProgram(await program);
 
-  let positions = 
-  
   let vbo = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(
