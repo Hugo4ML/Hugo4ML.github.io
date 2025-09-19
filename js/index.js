@@ -2,7 +2,7 @@
 
 import * as input from "./input.js";
 
-async function main(canvas) {
+async function main() {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
   */
@@ -87,4 +87,4 @@ async function main(canvas) {
   }, 33);
 }
 
-main(canvas);
+main();
