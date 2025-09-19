@@ -2,20 +2,18 @@
 
 import * as input from "./input.js";
 
-window.document.title = "(0.60) Simple project";
-const canvas = window.document.getElementById("canvas");
-const gl = canvas.getContext("webgl2");
-
-let keyboard = new input.Keyboard();
-window.addEventListener("keydown", event => keyboard.keydown(event));
-window.addEventListener("keyup", event => keyboard.keyup(event));
-
-let color = [0.5, 0.3, 0.4];
-
 async function main(canvas) {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
   */
+  window.document.title = "(0.61) Simple project";
+  
+  let keyboard = new input.Keyboard();
+  window.addEventListener("keydown", event => keyboard.keydown(event));
+  window.addEventListener("keyup", event => keyboard.keyup(event));
+  
+  const canvas = window.document.getElementById("canvas");
+  const gl = canvas.getContext("webgl2");
   if(!gl) {
     console.log("Failed to create a webGL2 context.");
     return;
@@ -44,21 +42,16 @@ async function main(canvas) {
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
   gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
   
-  let positionL = gl.getAttribLocation(await program, "position");
+  //let positionL = gl.getAttribLocation(await program, "position");
 
   let vao = gl.createVertexArray();
   gl.bindVertexArray(vao);
-  gl.enableVertexAttribArray(positionL);
-  gl.vertexAttribPointer(positionL, 3, gl.FLOAT, false, 0, 0);
+  gl.enableVertexAttribArray(0);
+  gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
 
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
   
-  //gl.clearColor(0.5, 0.3, 0.4, 1.0);
-  gl.clearColor(color[0], color[1], color[2], 1.0);
-  gl.clear(gl.COLOR_BUFFER_BIT);
-
-  gl.useProgram(await program);
-  gl.drawArrays(gl.TRIANGLES, 0, 3);
+  let color = [0.5, 0.3, 0.4, 1.0];
   
   let deltaInnerWidth = undefined, deltaInnerHeight = undefined;
   setInterval(async function() {
