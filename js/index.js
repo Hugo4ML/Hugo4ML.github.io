@@ -32,22 +32,28 @@ async function main() {
   gl.attachShader(program, await fragmentShader);
   gl.linkProgram(await program);
 
-  let positions = new Float32Array(
-    0.1, 0, 0,
-    0.2, 0.5, 0,
-    0.7, 0.3, 0
-  );
+  let positions = 
   
   let vbo = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
-  gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
-  
-  //let positionL = gl.getAttribLocation(await program, "position");
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(
+    0.0 / 3, 0.0 / 3,
+    1.0 / 3, 0.0 / 3,
+    1.0 / 3, 1.0 / 3,
+    0.0 / 3, 1.0 / 3
+  ), gl.STATIC_DRAW);
+
+  let ebo = gl.createBuffer();
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ebo);
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new UInt32Array(
+    0, 1, 2,
+    0, 2, 3
+  ), gl.STATIC_DRAW);
 
   let vao = gl.createVertexArray();
   gl.bindVertexArray(vao);
   gl.enableVertexAttribArray(0);
-  gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
 
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
   
@@ -83,8 +89,8 @@ async function main() {
     gl.clear(gl.COLOR_BUFFER_BIT);
     
     gl.useProgram(await program);
-    gl.drawArrays(gl.TRIANGLES, 0, 3);
-  }, 33);
+    gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_INT, 0);
+  }, 1000 / 60);
 }
 
 main();
