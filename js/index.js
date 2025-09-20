@@ -43,7 +43,7 @@ async function main() {
 
   let ebo = gl.createBuffer();
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ebo);
-  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new UInt32Array(
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint32Array(
     0, 1, 2,
     0, 2, 3
   ), gl.STATIC_DRAW);
