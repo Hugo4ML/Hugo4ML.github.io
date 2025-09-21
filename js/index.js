@@ -86,7 +86,8 @@ async function main() {
     gl.clear(gl.COLOR_BUFFER_BIT);
     
     gl.useProgram(await program);
-    gl.drawElements(gl.TRIANGLES, 3, gl.UNSIGNED_INT, 0);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    //gl.drawElements(gl.TRIANGLES, 3, gl.UNSIGNED_INT, 0);
   }, 1000 / 60);
 }
 
