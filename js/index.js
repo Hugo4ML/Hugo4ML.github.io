@@ -6,7 +6,7 @@ async function main() {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
   */
-  window.document.title = "(0.62) Simple project";
+  window.document.title = "(0.63) Simple project";
   
   let keyboard = new input.Keyboard();
   window.addEventListener("keydown", event => keyboard.keydown(event));
@@ -35,7 +35,6 @@ async function main() {
   let vao = gl.createVertexArray();
   gl.bindVertexArray(vao);
   gl.enableVertexAttribArray(0);
-  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
   
   let vbo = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
@@ -52,6 +51,8 @@ async function main() {
     0, 1, 2,
     0, 2, 3
   ), gl.STATIC_DRAW);
+  
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
   
   let color = [0.5, 0.3, 0.4, 1.0];
   
