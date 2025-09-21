@@ -32,6 +32,11 @@ async function main() {
   gl.attachShader(program, await fragmentShader);
   gl.linkProgram(await program);
 
+  let vao = gl.createVertexArray();
+  gl.bindVertexArray(vao);
+  gl.enableVertexAttribArray(0);
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+  
   let vbo = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(
@@ -47,13 +52,6 @@ async function main() {
     0, 1, 2,
     0, 2, 3
   ), gl.STATIC_DRAW);
-
-  let vao = gl.createVertexArray();
-  gl.bindVertexArray(vao);
-  gl.enableVertexAttribArray(0);
-  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
-
-  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
   
   let color = [0.5, 0.3, 0.4, 1.0];
   
