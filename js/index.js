@@ -1,11 +1,11 @@
 "use strict";
 
-import * as input from "./input.js";
+/*import * as input from "./input.js";
 
 async function main() {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
-  */
+  *//*
   window.document.title = "(0.64) Simple project";
   
   let keyboard = new input.Keyboard();
@@ -59,9 +59,7 @@ async function main() {
   let deltaInnerWidth = undefined, deltaInnerHeight = undefined;
   setInterval(async function() {
     if(deltaInnerWidth !== window.innerWidth || deltaInnerHeight !== window.innerHeight) {
-      /*
-      Resize page.
-      */
+      //Resize page.
       let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
       canvas.width = minimum * 16, canvas.height = minimum * 9;
       canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px", canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
@@ -91,4 +89,4 @@ async function main() {
   }, 1000 / 60);
 }
 
-main();
+main();*/
