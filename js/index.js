@@ -6,7 +6,7 @@ async function main() {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
   */
-  window.document.title = "(0.63) Simple project";
+  window.document.title = "(0.64) Simple project";
   
   let keyboard = new input.Keyboard();
   window.addEventListener("keydown", event => keyboard.keydown(event));
@@ -86,7 +86,7 @@ async function main() {
     gl.clear(gl.COLOR_BUFFER_BIT);
     
     gl.useProgram(await program);
-    gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_INT, 0);
+    gl.drawElements(gl.TRIANGLES, 3, gl.UNSIGNED_INT, 0);
   }, 1000 / 60);
 }
 
