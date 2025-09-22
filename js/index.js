@@ -131,6 +131,7 @@ void main() {
 `;
 
 function main() {
+  window.document.title = "(0.100) Simple project";
   // Get A WebGL context
   var canvas = document.querySelector("#canvas");
   var gl = canvas.getContext("webgl2");
@@ -199,7 +200,7 @@ function main() {
   ];
   gl.bufferData(
       gl.ELEMENT_ARRAY_BUFFER,
-      new Uint16Array(indices),
+      new Uint32Array(indices),
       gl.STATIC_DRAW
   );
 
@@ -233,7 +234,7 @@ function main() {
     var primitiveType = gl.TRIANGLES;
     var offset = 0;
     var count = 6;
-    var indexType = gl.UNSIGNED_SHORT;
+    var indexType = gl.UNSIGNED_INT;
     gl.drawElements(primitiveType, count, indexType, offset);
   }
 }
