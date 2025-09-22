@@ -1,56 +1,55 @@
 "use strict";
 
-/*import * as input from "./input.js";
+import * as input from "./input.js";
 
 async function main() {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
-  *//*
-  window.document.title = "(0.64) Simple project";
+  */
+  window.document.title = "(0.1.01) Simple project";
   
-  let keyboard = new input.Keyboard();
+  const keyboard = new input.Keyboard();
   window.addEventListener("keydown", event => keyboard.keydown(event));
   window.addEventListener("keyup", event => keyboard.keyup(event));
   
   const canvas = window.document.getElementById("canvas");
   const gl = canvas.getContext("webgl2");
   if(!gl) {
-    console.log("Failed to create a webGL2 context.");
     return;
   }
 
-  let vertexShader = gl.createShader(gl.VERTEX_SHADER);
+  const vertexShader = gl.createShader(gl.VERTEX_SHADER);
   gl.shaderSource(vertexShader, await (await fetch("../glsl/vertexShader.glvs")).text());
   gl.compileShader(await vertexShader);
   
-  let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+  const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
   gl.shaderSource(fragmentShader, await (await fetch("../glsl/fragmentShader.glfs")).text());
   gl.compileShader(await fragmentShader);
   
-  let program = gl.createProgram();
+  const program = gl.createProgram();
   gl.attachShader(program, await vertexShader);
   gl.attachShader(program, await fragmentShader);
   gl.linkProgram(await program);
 
-  let vao = gl.createVertexArray();
+  const vao = gl.createVertexArray();
   gl.bindVertexArray(vao);
   gl.enableVertexAttribArray(0);
   
-  let vbo = gl.createBuffer();
+  const vbo = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
     0.0 / 3, 0.0 / 3,
     1.0 / 3, 0.0 / 3,
     1.0 / 3, 1.0 / 3,
     0.0 / 3, 1.0 / 3
-  ), gl.STATIC_DRAW);
+  ]), gl.STATIC_DRAW);
 
-  let ebo = gl.createBuffer();
+  const ebo = gl.createBuffer();
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ebo);
-  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint32Array(
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint32Array([
     0, 1, 2,
     0, 2, 3
-  ), gl.STATIC_DRAW);
+  ]), gl.STATIC_DRAW);
   
   gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
   
@@ -89,8 +88,8 @@ async function main() {
   }, 1000 / 60);
 }
 
-main();*/
-
+main();
+/*
 var vertexShaderSource = `#version 300 es
 
 // an attribute is an input (in) to a vertex shader.
@@ -258,5 +257,5 @@ function setRectangle(gl, x, y, width, height) {
   ]), gl.STATIC_DRAW);
 }
 
-main();
+main();*/
 
