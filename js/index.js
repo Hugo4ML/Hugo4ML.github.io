@@ -142,11 +142,11 @@ function main() {
   //var program = webglUtils.createProgramFromSources(gl,
   //    [vertexShaderSource, fragmentShaderSource]);
 
-  let vertexShader = gl.createShader;
+  let vertexShader = gl.createShader(gl.VERTEX_SHADER);
   gl.shaderSource(vertexShader, vertexShaderSource);
   gl.compileShader(vertexShader);
 
-  let fragmentShader = gl.createShader;
+  let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
   gl.shaderSource(fragmentShader, fragmentShaderSource);
   gl.compileShader(fragmentShader);
 
