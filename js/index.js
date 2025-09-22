@@ -46,10 +46,10 @@ async function main() {
 
   const ebo = gl.createBuffer();
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ebo);
-  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint32Array(
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint32Array([
     0, 1, 2,
     0, 2, 3
-  ), gl.STATIC_DRAW);
+  ]), gl.STATIC_DRAW);
   
   gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
   
@@ -83,8 +83,8 @@ async function main() {
     gl.clear(gl.COLOR_BUFFER_BIT);
     
     gl.useProgram(await program);
-    gl.drawArrays(gl.TRIANGLES, 0, 3);
-    //gl.drawElements(gl.TRIANGLES, 3, gl.UNSIGNED_INT, 0);
+    //gl.drawArrays(gl.TRIANGLES, 0, 3);
+    gl.drawElements(gl.TRIANGLES, 3, gl.UNSIGNED_INT, 0);
   }, 1000 / 60);
 }
 
