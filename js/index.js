@@ -55,14 +55,14 @@ async function main() {
     gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 0,          positions[vertex]);
     gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[vertex]);
   }*/
-  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 0,          positions[0]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[0]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 0,          positions[1]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[1]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 0,          positions[2]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[2]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 0,          positions[3]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[3]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, 0 * 5 * 32 / 8 + 0,          positions[0]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, 0 * 5 * 32 / 8 + 2 * 32 / 8, colors[0]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, 1 * 5 * 32 / 8 + 0,          positions[1]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, 1 * 5 * 32 / 8 + 2 * 32 / 8, colors[1]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, 2 * 5 * 32 / 8 + 0,          positions[2]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, 2 * 5 * 32 / 8 + 2 * 32 / 8, colors[2]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, 3 * 5 * 32 / 8 + 0,          positions[3]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, 3 * 5 * 32 / 8 + 2 * 32 / 8, colors[3]);
   
   const ebo = gl.createBuffer();
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ebo);
