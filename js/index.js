@@ -6,7 +6,7 @@ async function main() {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
   */
-  window.document.title = "(0.1.04) Simple project";
+  window.document.title = "(0.1.05) Simple project";
   
   const keyboard = new input.Keyboard();
   window.addEventListener("keydown", event => keyboard.keydown(event));
@@ -51,11 +51,19 @@ async function main() {
     new Float32Array([0.4, 0.5, 0.2]),
     new Float32Array([0.4, 0.5, 0.2])
   ];
-  for(let vertex = 0; vertex < 5; ++vertex) {
+  /*for(let vertex = 0; vertex < 5; ++vertex) {
     gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 0,          positions[vertex]);
     gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[vertex]);
-  }
-
+  }*/
+  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 0,          positions[0]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[0]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 0,          positions[1]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[1]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 0,          positions[2]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[2]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 0,          positions[3]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[3]);
+  
   const ebo = gl.createBuffer();
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ebo);
   gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint32Array([
