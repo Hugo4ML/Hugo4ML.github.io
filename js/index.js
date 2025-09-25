@@ -103,19 +103,19 @@ async function main() {
       }
     }
 
-    if(keyboard.ArrowDown) {
+    if(keyboard.ArrowDown.down) {
       snake.position.y -= 0.01 * deltaTime;
       console.log(snake.position.y);
     }
-    if(keyboard.ArrowUp) {
+    if(keyboard.ArrowUp.down) {
       snake.position.y += 0.01 * deltaTime;
       console.log(snake.position.y);
     }
-    if(keyboard.ArrowRight) {
+    if(keyboard.ArrowRight.down) {
       snake.position.x -= 0.01 * deltaTime;
       console.log(snake.position.x);
     }
-    if(keyboard.ArrowLeft) {
+    if(keyboard.ArrowLeft.down) {
       snake.position.x += 0.01 * deltaTime;
       console.log(snake.position.x);
     }
