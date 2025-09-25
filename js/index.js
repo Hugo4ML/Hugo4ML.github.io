@@ -13,7 +13,7 @@ async function main() {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
   */
-  window.document.title = "(0.1.09) Simple project";
+  window.document.title = "(0.1.10) Simple project";
   
   const keyboard = new input.Keyboard();
   window.addEventListener("keydown", event => keyboard.keydown(event));
@@ -46,30 +46,15 @@ async function main() {
   const vbo = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
   gl.bufferData(gl.ARRAY_BUFFER, 4 * 5 * 32 / 8, gl.STATIC_DRAW);
-  let positions = [
-    new Float32Array([0.0 / 3, 0.0 / 3]),
-    new Float32Array([1.0 / 3, 0.0 / 3]),
-    new Float32Array([1.0 / 3, 1.0 / 3]),
-    new Float32Array([0.0 / 3, 1.0 / 3])
-  ];
   let colors = [
     new Float32Array([0.4, 0.5, 0.2]),
     new Float32Array([0.4, 0.5, 0.2]),
     new Float32Array([0.4, 0.5, 0.2]),
     new Float32Array([0.4, 0.5, 0.2])
   ];
-  /*for(let vertex = 0; vertex < 4; ++vertex) {
-    gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 0,          positions[vertex]);
+  for(let vertex = 0; vertex < 4; ++vertex) {
     gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[vertex]);
-  }*/
-  gl.bufferSubData(gl.ARRAY_BUFFER, 0 * 5 * 32 / 8 + 0,          positions[0]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, 1 * 5 * 32 / 8 + 0,          positions[1]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, 2 * 5 * 32 / 8 + 0,          positions[2]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, 3 * 5 * 32 / 8 + 0,          positions[3]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, 0 * 5 * 32 / 8 + 2 * 32 / 8, colors[0]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, 1 * 5 * 32 / 8 + 2 * 32 / 8, colors[1]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, 2 * 5 * 32 / 8 + 2 * 32 / 8, colors[2]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, 3 * 5 * 32 / 8 + 2 * 32 / 8, colors[3]);
+  }
   
   const ebo = gl.createBuffer();
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ebo);
@@ -133,21 +118,16 @@ async function main() {
       new Float32Array([1.0 / 3, 1.0 / 3]),
       new Float32Array([0.0 / 3, 1.0 / 3])
     ];
-    for(let index = 0; index < 4; ++index) {
-      positions[index][0] += snake.position.x;
-      positions[index][1] += snake.position.y;
+    for(let vertex = 0; vertex < 4; ++vertex) {
+      positions[vertex][0] += snake.position.x;
+      positions[vertex][1] += snake.position.y;
+      gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8, positions[vertex]);
     }
-    
-    gl.bufferSubData(gl.ARRAY_BUFFER, 0 * 5 * 32 / 8 + 0, positions[0]);
-    gl.bufferSubData(gl.ARRAY_BUFFER, 1 * 5 * 32 / 8 + 0, positions[1]);
-    gl.bufferSubData(gl.ARRAY_BUFFER, 2 * 5 * 32 / 8 + 0, positions[2]);
-    gl.bufferSubData(gl.ARRAY_BUFFER, 3 * 5 * 32 / 8 + 0, positions[3]);
     
     gl.clearColor(color[0], color[1], color[2], 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     
     gl.useProgram(await program);
-    //gl.drawArrays(gl.TRIANGLES, 0, 3);
     gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_INT, 0);
   }, 1000 / 60);
 }
