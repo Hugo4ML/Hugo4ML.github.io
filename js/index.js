@@ -2,11 +2,18 @@
 
 import * as input from "./input.js";
 
+function Snake() {
+  this.position = {
+    x: 0.0,
+    y: 0.0
+  };
+}
+
 async function main() {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
   */
-  window.document.title = "(0.1.08) Simple project";
+  window.document.title = "(0.1.09) Simple project";
   
   const keyboard = new input.Keyboard();
   window.addEventListener("keydown", event => keyboard.keydown(event));
@@ -51,17 +58,17 @@ async function main() {
     new Float32Array([0.4, 0.5, 0.2]),
     new Float32Array([0.4, 0.5, 0.2])
   ];
-  /*for(let vertex = 0; vertex < 5; ++vertex) {
+  /*for(let vertex = 0; vertex < 4; ++vertex) {
     gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 0,          positions[vertex]);
     gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[vertex]);
   }*/
   gl.bufferSubData(gl.ARRAY_BUFFER, 0 * 5 * 32 / 8 + 0,          positions[0]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, 0 * 5 * 32 / 8 + 2 * 32 / 8, colors[0]);
   gl.bufferSubData(gl.ARRAY_BUFFER, 1 * 5 * 32 / 8 + 0,          positions[1]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, 1 * 5 * 32 / 8 + 2 * 32 / 8, colors[1]);
   gl.bufferSubData(gl.ARRAY_BUFFER, 2 * 5 * 32 / 8 + 0,          positions[2]);
-  gl.bufferSubData(gl.ARRAY_BUFFER, 2 * 5 * 32 / 8 + 2 * 32 / 8, colors[2]);
   gl.bufferSubData(gl.ARRAY_BUFFER, 3 * 5 * 32 / 8 + 0,          positions[3]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, 0 * 5 * 32 / 8 + 2 * 32 / 8, colors[0]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, 1 * 5 * 32 / 8 + 2 * 32 / 8, colors[1]);
+  gl.bufferSubData(gl.ARRAY_BUFFER, 2 * 5 * 32 / 8 + 2 * 32 / 8, colors[2]);
   gl.bufferSubData(gl.ARRAY_BUFFER, 3 * 5 * 32 / 8 + 2 * 32 / 8, colors[3]);
   
   const ebo = gl.createBuffer();
@@ -75,9 +82,16 @@ async function main() {
   gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
   
   let color = [0.5, 0.3, 0.4, 1.0];
+
+  let snake = new Snake();
   
+  let time = Date.now();
   let deltaInnerWidth = undefined, deltaInnerHeight = undefined;
   setInterval(async function() {
+    //Calculate delta time.
+    let deltaTime = Date.now() - time;
+    time = Date.now();
+    
     if(deltaInnerWidth !== window.innerWidth || deltaInnerHeight !== window.innerHeight) {
       //Resize page.
       let minimum = window.innerWidth / 16 <= window.innerHeight / 9? window.innerWidth / 16: window.innerHeight / 9;
@@ -99,13 +113,42 @@ async function main() {
         color[0] -= 0.025;
       }
     }
+
+    if(keyboard.ArrowDown) {
+      snake.position.y -= 0.01 * deltaTime;
+    }
+    if(keyboard.ArrowUp) {
+      snake.position.y += 0.01 * deltaTime;
+    }
+    if(keyboard.ArrowRight) {
+      snake.position.x -= 0.01 * deltaTime;
+    }
+    if(keyboard.ArrowLeft) {
+      snake.position.x += 0.01 * deltaTime;
+    }
+
+    let positions = [
+      new Float32Array([0.0 / 3, 0.0 / 3]),
+      new Float32Array([1.0 / 3, 0.0 / 3]),
+      new Float32Array([1.0 / 3, 1.0 / 3]),
+      new Float32Array([0.0 / 3, 1.0 / 3])
+    ];
+    for(let index = 0; index < 4; ++index) {
+      positions[index][0] += snake.position.x;
+      positions[index][1] += snake.position.y;
+    }
+    
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0 * 5 * 32 / 8 + 0, positions[0]);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 1 * 5 * 32 / 8 + 0, positions[1]);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 2 * 5 * 32 / 8 + 0, positions[2]);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 3 * 5 * 32 / 8 + 0, positions[3]);
     
     gl.clearColor(color[0], color[1], color[2], 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     
     gl.useProgram(await program);
     //gl.drawArrays(gl.TRIANGLES, 0, 3);
-    gl.drawElements(gl.TRIANGLES, 3, gl.UNSIGNED_INT, 0);
+    gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_INT, 0);
   }, 1000 / 60);
 }
 
