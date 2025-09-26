@@ -42,12 +42,13 @@ async function main() {
   gl.bindVertexArray(vao);
   gl.enableVertexAttribArray(0);
   gl.enableVertexAttribArray(1);
-  //gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 5 * 32 / 8, 0);
-  //gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
   
   const vbo = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
   gl.bufferData(gl.ARRAY_BUFFER, 4 * 5 * 32 / 8, gl.STATIC_DRAW);
+  
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 5 * 32 / 8, 0);
+  gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
   
   let colors = [
     new Float32Array([0.4, 0.5, 0.2]),
@@ -65,9 +66,6 @@ async function main() {
     0, 1, 2,
     0, 2, 3
   ]), gl.STATIC_DRAW);
-  
-  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 5 * 32 / 8, 0);
-  gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
   
   let color = [0.5, 0.3, 0.4, 1.0];
 
@@ -103,20 +101,16 @@ async function main() {
     }
 
     if(keyboard.ArrowDown.down) {
-      snake.position.y -= 0.01 * deltaTime;
-      console.log(snake.position.y);
+      snake.position.y -= 0.001 * deltaTime;
     }
     if(keyboard.ArrowUp.down) {
-      snake.position.y += 0.01 * deltaTime;
-      console.log(snake.position.y);
+      snake.position.y += 0.001 * deltaTime;
     }
     if(keyboard.ArrowRight.down) {
-      snake.position.x -= 0.01 * deltaTime;
-      console.log(snake.position.x);
+      snake.position.x += 0.001 * deltaTime;
     }
     if(keyboard.ArrowLeft.down) {
-      snake.position.x += 0.01 * deltaTime;
-      console.log(snake.position.x);
+      snake.position.x -= 0.001 * deltaTime;
     }
 
     let positions = [
