@@ -2,7 +2,7 @@
 
 import * as input from "./input.js";
 
-function Snake() {
+function Box() {
   this.position = {
     x: 0.0,
     y: 0.0
@@ -13,7 +13,7 @@ async function main() {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
   */
-  window.document.title = "(0.1.12) Simple project";
+  window.document.title = "(0.1.13) Simple project";
   
   const keyboard = new input.Keyboard();
   window.addEventListener("keydown", event => keyboard.keydown(event));
@@ -51,10 +51,10 @@ async function main() {
   gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
   
   let colors = [
-    new Float32Array([0.4, 0.5, 0.2]),
-    new Float32Array([0.4, 0.5, 0.2]),
-    new Float32Array([0.4, 0.5, 0.2]),
-    new Float32Array([0.4, 0.5, 0.2])
+    new Float32Array([0.0, 0.0, 0.0]),
+    new Float32Array([0.0, 0.0, 0.0]),
+    new Float32Array([0.0, 0.0, 0.0]),
+    new Float32Array([0.0, 0.0, 0.0])
   ];
   for(let vertex = 0; vertex < 4; ++vertex) {
     gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[vertex]);
@@ -67,9 +67,7 @@ async function main() {
     0, 2, 3
   ]), gl.STATIC_DRAW);
   
-  let color = [0.5, 0.3, 0.4, 1.0];
-
-  let snake = new Snake();
+  let box = new Box();
   
   let time = Date.now();
   let deltaInnerWidth = undefined, deltaInnerHeight = undefined;
@@ -88,44 +86,26 @@ async function main() {
       gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     };
     
-    if(keyboard.keysDown) {
-      if(color[0] < 1) {
-        color[0] += 0.025;
-      }
-    }
-    
-    if(!keyboard.keysDown) {
-      if(color[0] > 0) {
-        color[0] -= 0.025;
-      }
-    }
-
-    if(keyboard.ArrowDown.down) {
-      snake.position.y -= 0.001 * deltaTime;
-    }
-    if(keyboard.ArrowUp.down) {
-      snake.position.y += 0.001 * deltaTime;
-    }
     if(keyboard.ArrowRight.down) {
-      snake.position.x += 0.001 * deltaTime;
+      box.position.x += 0.001 * deltaTime;
     }
     if(keyboard.ArrowLeft.down) {
-      snake.position.x -= 0.001 * deltaTime;
+      box.position.x -= 0.001 * deltaTime;
     }
 
     let positions = [
-      new Float32Array([0.0 / 3, 0.0 / 3]),
-      new Float32Array([1.0 / 3, 0.0 / 3]),
-      new Float32Array([1.0 / 3, 1.0 / 3]),
-      new Float32Array([0.0 / 3, 1.0 / 3])
+      new Float32Array([0.0, 0.0]),
+      new Float32Array([0.2, 0.0]),
+      new Float32Array([0.2, 0.35]),
+      new Float32Array([0.0, 0.35])
     ];
     for(let vertex = 0; vertex < 4; ++vertex) {
-      positions[vertex][0] += snake.position.x;
-      positions[vertex][1] += snake.position.y;
+      positions[vertex][0] += box.position.x;
+      positions[vertex][1] += box.position.y;
       gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8, positions[vertex]);
     }
     
-    gl.clearColor(color[0], color[1], color[2], 1.0);
+    gl.clearColor(1.0, 1.0, 1.0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     
     gl.useProgram(await program);
