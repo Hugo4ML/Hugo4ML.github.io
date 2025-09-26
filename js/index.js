@@ -42,9 +42,8 @@ async function main() {
   gl.bindVertexArray(vao);
   gl.enableVertexAttribArray(0);
   gl.enableVertexAttribArray(1);
-  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 5 * 32 / 8, 0);
-  gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
-  
+  //gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 5 * 32 / 8, 0);
+  //gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
   
   const vbo = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
@@ -67,8 +66,8 @@ async function main() {
     0, 2, 3
   ]), gl.STATIC_DRAW);
   
-  //gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 5 * 32 / 8, 0);
-  //gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 5 * 32 / 8, 0);
+  gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
   
   let color = [0.5, 0.3, 0.4, 1.0];
 
