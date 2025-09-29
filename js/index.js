@@ -2,7 +2,7 @@
 
 import * as input from "./input.js";
 
-function Box(x, y, width, height) {
+function Box(gl, x, y, width, height) {
   this.position = {
     "x": x,
     "y": y
@@ -97,7 +97,7 @@ async function main() {
     0, 2, 3
   ]), gl.STATIC_DRAW);
   
-  let box = new Box(0.0, 0.0, 0.2, 0.35);
+  let box = new Box(gl, 0.0, 0.0, 0.2, 0.35);
   
   let time = Date.now();
   let deltaInnerWidth = undefined, deltaInnerHeight = undefined;
