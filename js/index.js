@@ -2,15 +2,39 @@
 
 import * as input from "./input.js";
 
-function Box() {
+function Box(x, y, width, height) {
   this.position = {
-    x: 0.0,
-    y: 0.0
+    "x": x,
+    "y": y
   };
   this.dimensions = {
-    width: 0.0,
-    height: 0.0
+    "width": width,
+    "height": height
   }
+  this.color = [1.0, 1.0, 1.0];
+  
+  this.vao = gl.createVertexArray();
+  gl.bindVertexArray(vao);
+  gl.enableVertexAttribArray(0);
+  gl.enableVertexAttribArray(1);
+
+  this.vbo = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+  gl.bufferData(gl.ARRAY_BUFFER, 4 * 5 * 32 / 8, gl.STATIC_DRAW);
+
+  this.ebo = gl.createBuffer();
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ebo);
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint32Array([
+    0, 1, 2,
+    0, 2, 3
+  ]), gl.STATIC_DRAW);
+  
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 5 * 32 / 8, 0);
+  gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
+}
+
+Box.prototype.draw = function() {
+  
 }
 
 async function main() {
@@ -73,7 +97,7 @@ async function main() {
     0, 2, 3
   ]), gl.STATIC_DRAW);
   
-  let box = new Box();
+  let box = new Box(0.0, 0.0, 0.2, 0.35);
   
   let time = Date.now();
   let deltaInnerWidth = undefined, deltaInnerHeight = undefined;
