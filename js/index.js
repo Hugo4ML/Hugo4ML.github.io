@@ -7,13 +7,17 @@ function Box() {
     x: 0.0,
     y: 0.0
   };
+  this.dimensions = {
+    width: 0.0,
+    height: 0.0
+  }
 }
 
 async function main() {
   /*
   Main function. Declared as asynchronous to make better use of promises and read files.
   */
-  window.document.title = "(0.1.13) Simple project";
+  window.document.title = "(0.1.15) Simple project";
   
   const keyboard = new input.Keyboard();
   window.addEventListener("keydown", event => keyboard.keydown(event));
@@ -49,12 +53,14 @@ async function main() {
   
   gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 5 * 32 / 8, 0);
   gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
+  let boxColor =  (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)? [1.0, 1.0, 1.0]: [0.0, 0.0, 0.0];
+  let backgrounfColor = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)? [0.0, 0.0, 0.0]: [1.0, 1.0, 1.0];
   
   let colors = [
-    new Float32Array([0.0, 0.0, 0.0]),
-    new Float32Array([0.0, 0.0, 0.0]),
-    new Float32Array([0.0, 0.0, 0.0]),
-    new Float32Array([0.0, 0.0, 0.0])
+    new Float32Array(boxColor),
+    new Float32Array(boxColor),
+    new Float32Array(boxColor),
+    new Float32Array(boxColor)
   ];
   for(let vertex = 0; vertex < 4; ++vertex) {
     gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, colors[vertex]);
@@ -105,7 +111,7 @@ async function main() {
       gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8, positions[vertex]);
     }
     
-    gl.clearColor(1.0, 1.0, 1.0, 1.0);
+    gl.clearColor(backgroundColor[0], backgroundColor[1], backgroundColor[2], 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     
     gl.useProgram(await program);
