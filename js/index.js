@@ -3,6 +3,9 @@
 import * as input from "./input.js";
 
 function Rect(gl, x, y, width, height) {
+  /*
+  Rectangle drawn by using webgl element buffers.
+  */
   this.position = {
     "x": x,
     "y": y
@@ -140,7 +143,8 @@ async function main() {
     gl.clear(gl.COLOR_BUFFER_BIT);
     
     gl.useProgram(await program);
-    gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_INT, 0);
+    box.draw();
+    //gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_INT, 0);
   }, 1000 / 60);
 }
 
