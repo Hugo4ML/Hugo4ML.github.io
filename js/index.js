@@ -34,7 +34,8 @@ function Rect(gl, x, y, width, height) {
 }
 
 Rect.prototype.draw = function() {
-  
+  gl.bindVertexArray(this.vao)
+  gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_INT, 0);
 }
 
 async function main() {
