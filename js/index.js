@@ -6,6 +6,7 @@ function Rect(gl, x, y, width, height) {
   /*
   Rectangle drawn by using webgl element buffers.
   */
+  this.gl = gl;
   this.position = {
     "x": x,
     "y": y
@@ -16,18 +17,18 @@ function Rect(gl, x, y, width, height) {
   }
   this.color = [1.0, 1.0, 1.0];
   
-  this.vao = gl.createVertexArray();
-  gl.bindVertexArray(this.vao);
-  gl.enableVertexAttribArray(0);
-  gl.enableVertexAttribArray(1);
+  this.vao = this.gl.createVertexArray();
+  this.gl.bindVertexArray(this.vao);
+  this.gl.enableVertexAttribArray(0);
+  this.gl.enableVertexAttribArray(1);
 
-  this.vbo = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, this.vbo);
-  gl.bufferData(gl.ARRAY_BUFFER, 4 * 5 * 32 / 8, gl.STATIC_DRAW);
+  this.vbo = this.gl.createBuffer();
+  this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.vbo);
+  this.gl.bufferData(this.gl.ARRAY_BUFFER, 4 * 5 * 32 / 8, this.gl.STATIC_DRAW);
 
-  this.ebo = gl.createBuffer();
-  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.ebo);
-  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint32Array([
+  this.ebo = this.gl.createBuffer();
+  this.gl.bindBuffer(this.gl.ELEMENT_ARRAY_BUFFER, this.ebo);
+  this.gl.bufferData(this.gl.ELEMENT_ARRAY_BUFFER, new Uint32Array([
     0, 1, 2,
     0, 2, 3
   ]), gl.STATIC_DRAW);
@@ -37,8 +38,8 @@ function Rect(gl, x, y, width, height) {
 }
 
 Rect.prototype.draw = function() {
-  gl.bindVertexArray(this.vao)
-  gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_INT, 0);
+  this.gl.bindVertexArray(this.vao)
+  this.gl.drawElements(this.gl.TRIANGLES, 6, this.gl.UNSIGNED_INT, 0);
 }
 
 async function main() {
