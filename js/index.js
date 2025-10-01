@@ -2,11 +2,11 @@
 
 import * as input from "./input.js";
 
-function Rect(gl, x, y, width, height) {
+function Rect(canvas, x, y, width, height) {
   /*
   Rectangle drawn by using webgl element buffers.
   */
-  this.gl = gl;
+  this.gl = canvas.getContext("webgl2");
   this.position = {
     "x": x,
     "y": y
@@ -15,7 +15,6 @@ function Rect(gl, x, y, width, height) {
     "width": width,
     "height": height
   }
-  this.color = [1.0, 1.0, 1.0];
   
   this.vao = this.gl.createVertexArray();
   this.gl.bindVertexArray(this.vao);
@@ -41,6 +40,18 @@ Rect.prototype.draw = function() {
   this.gl.bindVertexArray(this.vao)
   this.gl.drawElements(this.gl.TRIANGLES, 6, this.gl.UNSIGNED_INT, 0);
 }
+
+Object.defineProperty(Rect.prototype, "color", {
+  get() {
+    
+  },
+  set(color) {
+    let data = new Float32Array([color[0], color[1], color[3], color[4]]);
+    for(let vertex = 0; vertex < 4; ++vertex) {
+      this.gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, data);
+    }
+  }
+})
 
 async function main() {
   /*
@@ -102,7 +113,7 @@ async function main() {
     0, 2, 3
   ]), gl.STATIC_DRAW);
   
-  let box = new Rect(gl, 0.0, 0.0, 0.2, 0.35);
+  let box = new Rect(canvas, 0.0, 0.0, 0.2, 0.35);
   
   let time = Date.now();
   let deltaInnerWidth = undefined, deltaInnerHeight = undefined;
