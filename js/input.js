@@ -1,7 +1,7 @@
 "use strict";
 
-export function Keyboard() {
-  let keys = [
+export class Keyboard {
+  keys = [
     {
         key: "Backspace",
         keyCode: 8
@@ -235,28 +235,31 @@ export function Keyboard() {
         keyCode: 225
     }
   ];
-  for(const key of keys) {
-    this[key.key] = {
-      down: false,
-      up: true
-    };
-    this[key.keyCode] = this[key.key];
-    this.keysDown = 0;
-  }
-}
 
-Keyboard.prototype.keydown = function(event) {
-  if(this[event.key].up) {
-    this[event.key].down = true;
-    this[event.key].up = false;
-    this.keysDown += 1;
+  constructor() {
+    for(const key of keys) {
+      this[key.key] = {
+        down: false,
+        up: true
+      };
+      this[key.keyCode] = this[key.key];
+      this.keysDown = 0;
+    }  
   }
-}
 
-Keyboard.prototype.keyup = function(event) {
-  if(this[event.key].down) {
-    this[event.key].down = false;
-    this[event.key].up = true;
-    this.keysDown -= 1;
+  function keydown(event) {
+    if(this[event.key].up) {
+      this[event.key].down = true;
+      this[event.key].up = false;
+      this.keysDown += 1;
+    }
   }
-}
+
+  function keyup(event) {
+    if(this[event.key].down) {
+      this[event.key].down = false;
+      this[event.key].up = true;
+      this.keysDown -= 1;
+    }
+  }
+};
