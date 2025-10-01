@@ -8,12 +8,12 @@ function Rect(canvas, x, y, width, height) {
   */
   this.gl = canvas.getContext("webgl2");
   this.position = {
-    "x": x,
-    "y": y
+    x: x,
+    y: y
   };
   this.dimensions = {
-    "width": width,
-    "height": height
+    width: width,
+    height: height
   }
   
   this.vao = this.gl.createVertexArray();
