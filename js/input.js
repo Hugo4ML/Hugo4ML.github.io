@@ -247,7 +247,7 @@ export class Keyboard {
     }  
   }
 
-  function keydown(event) {
+  keydown(event) {
     if(this[event.key].up) {
       this[event.key].down = true;
       this[event.key].up = false;
@@ -255,7 +255,7 @@ export class Keyboard {
     }
   }
 
-  function keyup(event) {
+  keyup(event) {
     if(this[event.key].down) {
       this[event.key].down = false;
       this[event.key].up = true;
