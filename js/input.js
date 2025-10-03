@@ -2,7 +2,7 @@
 
 export class Keyboard {
   constructor() {
-    keys = [
+    let keys = [
       {
           key: "Backspace",
           keyCode: 8
