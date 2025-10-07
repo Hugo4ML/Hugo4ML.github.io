@@ -48,7 +48,7 @@ Object.defineProperty(Rect.prototype, "color", {
   set(color) {
     let data = new Float32Array([color[0], color[1], color[3], color[4]]);
     for(let vertex = 0; vertex < 4; ++vertex) {
-      this.gl.bufferSubData(gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, data);
+      this.gl.bufferSubData(this.gl.ARRAY_BUFFER, vertex * 5 * 32 / 8 + 2 * 32 / 8, data);
     }
   }
 })
