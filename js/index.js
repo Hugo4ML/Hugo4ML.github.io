@@ -32,8 +32,8 @@ function Rect(canvas, x, y, width, height) {
     0, 2, 3
   ]), this.gl.STATIC_DRAW);
   
-  this.gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 5 * 32 / 8, 0);
-  this.gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
+  this.gl.vertexAttribPointer(0, 2, this.gl.FLOAT, false, 5 * 32 / 8, 0);
+  this.gl.vertexAttribPointer(1, 3, this.gl.FLOAT, false, 5 * 32 / 8, 2 * 32 / 8);
 }
 
 Rect.prototype.draw = function() {
